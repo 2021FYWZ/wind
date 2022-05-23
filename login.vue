@@ -2,12 +2,10 @@
 	<view>
 		<image class="t" src="../../static/HI.jpg" ></image>
 		<view class="zh">
-			<text>账号：</text>
-			<input type="text" value="" v-model="user_name"/>
+			<input type="text" value="" v-model="user_name" placeholder="账号"/>
 		</view>
 		<view class="mm">
-			<text>密码：</text>
-			<input type="text" value="" v-model="password"/>
+			<input type="text" value="" v-model="password" placeholder="密码"/>
 		</view>
 		<view class="zw">
 			<button type="default" @tap="register()">注册</button>
@@ -24,7 +22,7 @@
 		data() {
 			return {
 				user_name:"",
-				password:""
+				password:"",
 			}
 		},
 		methods: {
@@ -40,6 +38,6 @@
 <style>
 .zh,.mm{display: flex;}
 .zh input,.mm input{
-	background: #007AFF;
+	background:#808080
 }
 </style>
