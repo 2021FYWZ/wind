@@ -1,30 +1,30 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wind.mapper.ManagerMapper" >
-  <resultMap id="BaseResultMap" type="com.wind.entity.Manager" >
-    <id column="m_id" property="mId" jdbcType="INTEGER" />
-    <result column="m_account" property="mAccount" jdbcType="VARCHAR" />
-    <result column="m_name" property="mName" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wind.mapper.ManagerMapper">
+  <resultMap id="BaseResultMap" type="com.wind.entity.Manager">
+    <id column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="m_account" jdbcType="VARCHAR" property="mAccount" />
+    <result column="m_name" jdbcType="VARCHAR" property="mName" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -35,25 +35,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -64,115 +64,292 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     m_id, m_account, m_name
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wind.entity.ManagerExample" >
+  <select id="selectByExample" parameterType="com.wind.entity.ManagerExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from wmanager
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from wmanager
     where m_id = #{mId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wmanager
     where m_id = #{mId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wind.entity.ManagerExample" >
+  <delete id="deleteByExample" parameterType="com.wind.entity.ManagerExample">
     delete from wmanager
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wind.entity.Manager" >
+  <insert id="insert" parameterType="com.wind.entity.Manager">
     insert into wmanager (m_id, m_account, m_name
       )
     values (#{mId,jdbcType=INTEGER}, #{mAccount,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.wind.entity.Manager" >
+  <insert id="insertSelective" parameterType="com.wind.entity.Manager">
     insert into wmanager
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="mId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
         m_id,
       </if>
-      <if test="mAccount != null" >
+      <if test="mAccount != null">
         m_account,
       </if>
-      <if test="mName != null" >
+      <if test="mName != null">
         m_name,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="mId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
         #{mId,jdbcType=INTEGER},
       </if>
-      <if test="mAccount != null" >
+      <if test="mAccount != null">
         #{mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="mName != null" >
+      <if test="mName != null">
         #{mName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wind.entity.ManagerExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.wind.entity.ManagerExample" resultType="java.lang.Integer">
     select count(*) from wmanager
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update wmanager
-    <set >
-      <if test="record.mId != null" >
+    <set>
+      <if test="record.mId != null">
         m_id = #{record.mId,jdbcType=INTEGER},
       </if>
-      <if test="record.mAccount != null" >
+      <if test="record.mAccount != null">
         m_account = #{record.mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="record.mName != null" >
+      <if test="record.mName != null">
         m_name = #{record.mName,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update wmanager
     set m_id = #{record.mId,jdbcType=INTEGER},
       m_account = #{record.mAccount,jdbcType=VARCHAR},
       m_name = #{record.mName,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.Manager" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.Manager">
     update wmanager
-    <set >
-      <if test="mAccount != null" >
+    <set>
+      <if test="mAccount != null">
         m_account = #{mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="mName != null" >
+      <if test="mName != null">
         m_name = #{mName,jdbcType=VARCHAR},
       </if>
     </set>
     where m_id = #{mId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wind.entity.Manager" >
+  <update id="updateByPrimaryKey" parameterType="com.wind.entity.Manager">
+    update wmanager
+    set m_account = #{mAccount,jdbcType=VARCHAR},
+      m_name = #{mName,jdbcType=VARCHAR}
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wind.entity.Manager">
+    <id column="m_id" jdbcType="INTEGER" property="mId" />
+    <result column="m_account" jdbcType="VARCHAR" property="mAccount" />
+    <result column="m_name" jdbcType="VARCHAR" property="mName" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    m_id, m_account, m_name
+  </sql>
+  <select id="selectByExample" parameterType="com.wind.entity.ManagerExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wmanager
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wmanager
+    where m_id = #{mId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wmanager
+    where m_id = #{mId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wind.entity.ManagerExample">
+    delete from wmanager
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wind.entity.Manager">
+    insert into wmanager (m_id, m_account, m_name
+      )
+    values (#{mId,jdbcType=INTEGER}, #{mAccount,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wind.entity.Manager">
+    insert into wmanager
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        m_id,
+      </if>
+      <if test="mAccount != null">
+        m_account,
+      </if>
+      <if test="mName != null">
+        m_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mId != null">
+        #{mId,jdbcType=INTEGER},
+      </if>
+      <if test="mAccount != null">
+        #{mAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mName != null">
+        #{mName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wind.entity.ManagerExample" resultType="java.lang.Integer">
+    select count(*) from wmanager
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wmanager
+    <set>
+      <if test="record.mId != null">
+        m_id = #{record.mId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mAccount != null">
+        m_account = #{record.mAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mName != null">
+        m_name = #{record.mName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wmanager
+    set m_id = #{record.mId,jdbcType=INTEGER},
+      m_account = #{record.mAccount,jdbcType=VARCHAR},
+      m_name = #{record.mName,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.Manager">
+    update wmanager
+    <set>
+      <if test="mAccount != null">
+        m_account = #{mAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="mName != null">
+        m_name = #{mName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where m_id = #{mId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wind.entity.Manager">
     update wmanager
     set m_account = #{mAccount,jdbcType=VARCHAR},
       m_name = #{mName,jdbcType=VARCHAR}

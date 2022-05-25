@@ -1,34 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wind.mapper.FeedBackMapper" >
-  <resultMap id="BaseResultMap" type="com.wind.entity.FeedBack" >
-    <id column="f_id" property="fId" jdbcType="INTEGER" />
-    <result column="u_id" property="uId" jdbcType="INTEGER" />
-    <result column="f_date" property="fDate" jdbcType="DATE" />
-    <result column="f_ip" property="fIp" jdbcType="VARCHAR" />
-    <result column="f_content" property="fContent" jdbcType="VARCHAR" />
-    <result column="f_info" property="fInfo" jdbcType="VARCHAR" />
-    <result column="f_version" property="fVersion" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wind.mapper.FeedBackMapper">
+  <resultMap id="BaseResultMap" type="com.wind.entity.FeedBack">
+    <id column="f_id" jdbcType="INTEGER" property="fId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="f_date" jdbcType="DATE" property="fDate" />
+    <result column="f_ip" jdbcType="VARCHAR" property="fIp" />
+    <result column="f_content" jdbcType="VARCHAR" property="fContent" />
+    <result column="f_info" jdbcType="VARCHAR" property="fInfo" />
+    <result column="f_version" jdbcType="VARCHAR" property="fVersion" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -39,25 +39,25 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
                   and ${criterion.condition}
                 </when>
-                <when test="criterion.singleValue" >
+                <when test="criterion.singleValue">
                   and ${criterion.condition} #{criterion.value}
                 </when>
-                <when test="criterion.betweenValue" >
+                <when test="criterion.betweenValue">
                   and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
                 </when>
-                <when test="criterion.listValue" >
+                <when test="criterion.listValue">
                   and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                     #{listItem}
                   </foreach>
                 </when>
@@ -68,40 +68,40 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     f_id, u_id, f_date, f_ip, f_content, f_info, f_version
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wind.entity.FeedBackExample" >
+  <select id="selectByExample" parameterType="com.wind.entity.FeedBackExample" resultMap="BaseResultMap">
     select
-    <if test="distinct" >
+    <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
     from wfeedback
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
-    <if test="orderByClause != null" >
+    <if test="orderByClause != null">
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from wfeedback
     where f_id = #{fId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from wfeedback
     where f_id = #{fId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wind.entity.FeedBackExample" >
+  <delete id="deleteByExample" parameterType="com.wind.entity.FeedBackExample">
     delete from wfeedback
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wind.entity.FeedBack" >
+  <insert id="insert" parameterType="com.wind.entity.FeedBack">
     insert into wfeedback (f_id, u_id, f_date, 
       f_ip, f_content, f_info, 
       f_version)
@@ -109,91 +109,91 @@
       #{fIp,jdbcType=VARCHAR}, #{fContent,jdbcType=VARCHAR}, #{fInfo,jdbcType=VARCHAR}, 
       #{fVersion,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wind.entity.FeedBack" >
+  <insert id="insertSelective" parameterType="com.wind.entity.FeedBack">
     insert into wfeedback
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="fId != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fId != null">
         f_id,
       </if>
-      <if test="uId != null" >
+      <if test="uId != null">
         u_id,
       </if>
-      <if test="fDate != null" >
+      <if test="fDate != null">
         f_date,
       </if>
-      <if test="fIp != null" >
+      <if test="fIp != null">
         f_ip,
       </if>
-      <if test="fContent != null" >
+      <if test="fContent != null">
         f_content,
       </if>
-      <if test="fInfo != null" >
+      <if test="fInfo != null">
         f_info,
       </if>
-      <if test="fVersion != null" >
+      <if test="fVersion != null">
         f_version,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="fId != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fId != null">
         #{fId,jdbcType=INTEGER},
       </if>
-      <if test="uId != null" >
+      <if test="uId != null">
         #{uId,jdbcType=INTEGER},
       </if>
-      <if test="fDate != null" >
+      <if test="fDate != null">
         #{fDate,jdbcType=DATE},
       </if>
-      <if test="fIp != null" >
+      <if test="fIp != null">
         #{fIp,jdbcType=VARCHAR},
       </if>
-      <if test="fContent != null" >
+      <if test="fContent != null">
         #{fContent,jdbcType=VARCHAR},
       </if>
-      <if test="fInfo != null" >
+      <if test="fInfo != null">
         #{fInfo,jdbcType=VARCHAR},
       </if>
-      <if test="fVersion != null" >
+      <if test="fVersion != null">
         #{fVersion,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wind.entity.FeedBackExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.wind.entity.FeedBackExample" resultType="java.lang.Integer">
     select count(*) from wfeedback
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
-  <update id="updateByExampleSelective" parameterType="map" >
+  <update id="updateByExampleSelective" parameterType="map">
     update wfeedback
-    <set >
-      <if test="record.fId != null" >
+    <set>
+      <if test="record.fId != null">
         f_id = #{record.fId,jdbcType=INTEGER},
       </if>
-      <if test="record.uId != null" >
+      <if test="record.uId != null">
         u_id = #{record.uId,jdbcType=INTEGER},
       </if>
-      <if test="record.fDate != null" >
+      <if test="record.fDate != null">
         f_date = #{record.fDate,jdbcType=DATE},
       </if>
-      <if test="record.fIp != null" >
+      <if test="record.fIp != null">
         f_ip = #{record.fIp,jdbcType=VARCHAR},
       </if>
-      <if test="record.fContent != null" >
+      <if test="record.fContent != null">
         f_content = #{record.fContent,jdbcType=VARCHAR},
       </if>
-      <if test="record.fInfo != null" >
+      <if test="record.fInfo != null">
         f_info = #{record.fInfo,jdbcType=VARCHAR},
       </if>
-      <if test="record.fVersion != null" >
+      <if test="record.fVersion != null">
         f_version = #{record.fVersion,jdbcType=VARCHAR},
       </if>
     </set>
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExample" parameterType="map">
     update wfeedback
     set f_id = #{record.fId,jdbcType=INTEGER},
       u_id = #{record.uId,jdbcType=INTEGER},
@@ -202,35 +202,274 @@
       f_content = #{record.fContent,jdbcType=VARCHAR},
       f_info = #{record.fInfo,jdbcType=VARCHAR},
       f_version = #{record.fVersion,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
+    <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.FeedBack" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.FeedBack">
     update wfeedback
-    <set >
-      <if test="uId != null" >
+    <set>
+      <if test="uId != null">
         u_id = #{uId,jdbcType=INTEGER},
       </if>
-      <if test="fDate != null" >
+      <if test="fDate != null">
         f_date = #{fDate,jdbcType=DATE},
       </if>
-      <if test="fIp != null" >
+      <if test="fIp != null">
         f_ip = #{fIp,jdbcType=VARCHAR},
       </if>
-      <if test="fContent != null" >
+      <if test="fContent != null">
         f_content = #{fContent,jdbcType=VARCHAR},
       </if>
-      <if test="fInfo != null" >
+      <if test="fInfo != null">
         f_info = #{fInfo,jdbcType=VARCHAR},
       </if>
-      <if test="fVersion != null" >
+      <if test="fVersion != null">
         f_version = #{fVersion,jdbcType=VARCHAR},
       </if>
     </set>
     where f_id = #{fId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wind.entity.FeedBack" >
+  <update id="updateByPrimaryKey" parameterType="com.wind.entity.FeedBack">
+    update wfeedback
+    set u_id = #{uId,jdbcType=INTEGER},
+      f_date = #{fDate,jdbcType=DATE},
+      f_ip = #{fIp,jdbcType=VARCHAR},
+      f_content = #{fContent,jdbcType=VARCHAR},
+      f_info = #{fInfo,jdbcType=VARCHAR},
+      f_version = #{fVersion,jdbcType=VARCHAR}
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.wind.entity.FeedBack">
+    <id column="f_id" jdbcType="INTEGER" property="fId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+    <result column="f_date" jdbcType="DATE" property="fDate" />
+    <result column="f_ip" jdbcType="VARCHAR" property="fIp" />
+    <result column="f_content" jdbcType="VARCHAR" property="fContent" />
+    <result column="f_info" jdbcType="VARCHAR" property="fInfo" />
+    <result column="f_version" jdbcType="VARCHAR" property="fVersion" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    f_id, u_id, f_date, f_ip, f_content, f_info, f_version
+  </sql>
+  <select id="selectByExample" parameterType="com.wind.entity.FeedBackExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wfeedback
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from wfeedback
+    where f_id = #{fId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from wfeedback
+    where f_id = #{fId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wind.entity.FeedBackExample">
+    delete from wfeedback
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wind.entity.FeedBack">
+    insert into wfeedback (f_id, u_id, f_date, 
+      f_ip, f_content, f_info, 
+      f_version)
+    values (#{fId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{fDate,jdbcType=DATE}, 
+      #{fIp,jdbcType=VARCHAR}, #{fContent,jdbcType=VARCHAR}, #{fInfo,jdbcType=VARCHAR}, 
+      #{fVersion,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wind.entity.FeedBack">
+    insert into wfeedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fId != null">
+        f_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="fDate != null">
+        f_date,
+      </if>
+      <if test="fIp != null">
+        f_ip,
+      </if>
+      <if test="fContent != null">
+        f_content,
+      </if>
+      <if test="fInfo != null">
+        f_info,
+      </if>
+      <if test="fVersion != null">
+        f_version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fId != null">
+        #{fId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="fDate != null">
+        #{fDate,jdbcType=DATE},
+      </if>
+      <if test="fIp != null">
+        #{fIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fContent != null">
+        #{fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fInfo != null">
+        #{fInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fVersion != null">
+        #{fVersion,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wind.entity.FeedBackExample" resultType="java.lang.Integer">
+    select count(*) from wfeedback
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update wfeedback
+    <set>
+      <if test="record.fId != null">
+        f_id = #{record.fId,jdbcType=INTEGER},
+      </if>
+      <if test="record.uId != null">
+        u_id = #{record.uId,jdbcType=INTEGER},
+      </if>
+      <if test="record.fDate != null">
+        f_date = #{record.fDate,jdbcType=DATE},
+      </if>
+      <if test="record.fIp != null">
+        f_ip = #{record.fIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fContent != null">
+        f_content = #{record.fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fInfo != null">
+        f_info = #{record.fInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fVersion != null">
+        f_version = #{record.fVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update wfeedback
+    set f_id = #{record.fId,jdbcType=INTEGER},
+      u_id = #{record.uId,jdbcType=INTEGER},
+      f_date = #{record.fDate,jdbcType=DATE},
+      f_ip = #{record.fIp,jdbcType=VARCHAR},
+      f_content = #{record.fContent,jdbcType=VARCHAR},
+      f_info = #{record.fInfo,jdbcType=VARCHAR},
+      f_version = #{record.fVersion,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.FeedBack">
+    update wfeedback
+    <set>
+      <if test="uId != null">
+        u_id = #{uId,jdbcType=INTEGER},
+      </if>
+      <if test="fDate != null">
+        f_date = #{fDate,jdbcType=DATE},
+      </if>
+      <if test="fIp != null">
+        f_ip = #{fIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fContent != null">
+        f_content = #{fContent,jdbcType=VARCHAR},
+      </if>
+      <if test="fInfo != null">
+        f_info = #{fInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="fVersion != null">
+        f_version = #{fVersion,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where f_id = #{fId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wind.entity.FeedBack">
     update wfeedback
     set u_id = #{uId,jdbcType=INTEGER},
       f_date = #{fDate,jdbcType=DATE},
