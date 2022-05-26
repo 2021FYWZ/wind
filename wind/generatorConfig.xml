@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <!--        默认是false：添加注释，这个标签必须放在最前面   -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--        数据库连接信息-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/project_wind"
+                        userId="root"
+                        password="0101">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <!--
+                默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer
+                    true，把JDBC DECIMAL 和 NUMERIC 类型解析为java.math.BigDecimal
+            -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--        指定Entity生成位置-->
+        <javaModelGenerator targetPackage="com.wind.entity"
+                            targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!--        指定Mapper.xml文件生成位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--        指定dao接口生成位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wind.dao" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--        指定每个表的生成策略  -->
+        <table tableName="wfeedback" domainObjectName="Feedback"/>
+        <table tableName="whelp" domainObjectName="Help"/>
+        <table tableName="wmanager" domainObjectName="Manager"/>
+        <table tableName="worder" domainObjectName="Order"/>
+        <table tableName="wuser" domainObjectName="User"/>
+    </context>
+
+</generatorConfiguration>

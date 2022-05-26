@@ -1,6 +1,6 @@
 package com.wind.entity;
 
-public class Helper {
+public class Help {
     private Integer hId;
 
     private String hContent;
@@ -20,7 +20,7 @@ public class Helper {
     }
 
     public void sethContent(String hContent) {
-        this.hContent = hContent == null ? null : hContent.trim();
+        this.hContent = hContent;
     }
 
     public String gethMethod() {
@@ -28,6 +28,6 @@ public class Helper {
     }
 
     public void sethMethod(String hMethod) {
-        this.hMethod = hMethod == null ? null : hMethod.trim();
+        this.hMethod = hMethod;
     }
 }

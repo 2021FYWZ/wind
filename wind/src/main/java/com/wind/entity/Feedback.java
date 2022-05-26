@@ -2,7 +2,7 @@ package com.wind.entity;
 
 import java.util.Date;
 
-public class FeedBack {
+public class Feedback {
     private Integer fId;
 
     private Integer uId;
@@ -46,7 +46,7 @@ public class FeedBack {
     }
 
     public void setfIp(String fIp) {
-        this.fIp = fIp == null ? null : fIp.trim();
+        this.fIp = fIp;
     }
 
     public String getfContent() {
@@ -54,7 +54,7 @@ public class FeedBack {
     }
 
     public void setfContent(String fContent) {
-        this.fContent = fContent == null ? null : fContent.trim();
+        this.fContent = fContent;
     }
 
     public String getfInfo() {
@@ -62,7 +62,7 @@ public class FeedBack {
     }
 
     public void setfInfo(String fInfo) {
-        this.fInfo = fInfo == null ? null : fInfo.trim();
+        this.fInfo = fInfo;
     }
 
     public String getfVersion() {
@@ -70,6 +70,6 @@ public class FeedBack {
     }
 
     public void setfVersion(String fVersion) {
-        this.fVersion = fVersion == null ? null : fVersion.trim();
+        this.fVersion = fVersion;
     }
 }

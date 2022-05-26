@@ -32,7 +32,7 @@ public class User {
     }
 
     public void setuName(String uName) {
-        this.uName = uName == null ? null : uName.trim();
+        this.uName = uName;
     }
 
     public String getuPwd() {
@@ -40,7 +40,7 @@ public class User {
     }
 
     public void setuPwd(String uPwd) {
-        this.uPwd = uPwd == null ? null : uPwd.trim();
+        this.uPwd = uPwd;
     }
 
     public String getuNickname() {
@@ -48,7 +48,7 @@ public class User {
     }
 
     public void setuNickname(String uNickname) {
-        this.uNickname = uNickname == null ? null : uNickname.trim();
+        this.uNickname = uNickname;
     }
 
     public String getuImg() {
@@ -56,7 +56,7 @@ public class User {
     }
 
     public void setuImg(String uImg) {
-        this.uImg = uImg == null ? null : uImg.trim();
+        this.uImg = uImg;
     }
 
     public String getuPhone() {
@@ -64,7 +64,7 @@ public class User {
     }
 
     public void setuPhone(String uPhone) {
-        this.uPhone = uPhone == null ? null : uPhone.trim();
+        this.uPhone = uPhone;
     }
 
     public String getuEmail() {
@@ -72,7 +72,7 @@ public class User {
     }
 
     public void setuEmail(String uEmail) {
-        this.uEmail = uEmail == null ? null : uEmail.trim();
+        this.uEmail = uEmail;
     }
 
     public String getuState() {
@@ -80,7 +80,7 @@ public class User {
     }
 
     public void setuState(String uState) {
-        this.uState = uState == null ? null : uState.trim();
+        this.uState = uState;
     }
 
     public String getuOpenid() {
@@ -88,6 +88,6 @@ public class User {
     }
 
     public void setuOpenid(String uOpenid) {
-        this.uOpenid = uOpenid == null ? null : uOpenid.trim();
+        this.uOpenid = uOpenid;
     }
 }

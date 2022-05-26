@@ -20,7 +20,7 @@ public class Manager {
     }
 
     public void setmAccount(String mAccount) {
-        this.mAccount = mAccount == null ? null : mAccount.trim();
+        this.mAccount = mAccount;
     }
 
     public String getmName() {
@@ -28,6 +28,6 @@ public class Manager {
     }
 
     public void setmName(String mName) {
-        this.mName = mName == null ? null : mName.trim();
+        this.mName = mName;
     }
 }

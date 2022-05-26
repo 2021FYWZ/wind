@@ -45,7 +45,7 @@ public class Order {
     }
 
     public void setoContatcts(String oContatcts) {
-        this.oContatcts = oContatcts == null ? null : oContatcts.trim();
+        this.oContatcts = oContatcts;
     }
 
     public String getoPhone() {
@@ -53,7 +53,7 @@ public class Order {
     }
 
     public void setoPhone(String oPhone) {
-        this.oPhone = oPhone == null ? null : oPhone.trim();
+        this.oPhone = oPhone;
     }
 
     public String getoAddress() {
@@ -61,7 +61,7 @@ public class Order {
     }
 
     public void setoAddress(String oAddress) {
-        this.oAddress = oAddress == null ? null : oAddress.trim();
+        this.oAddress = oAddress;
     }
 
     public BigDecimal getoPrice() {
@@ -77,7 +77,7 @@ public class Order {
     }
 
     public void setoPacksge(String oPacksge) {
-        this.oPacksge = oPacksge == null ? null : oPacksge.trim();
+        this.oPacksge = oPacksge;
     }
 
     public Date getoDate() {
@@ -101,6 +101,6 @@ public class Order {
     }
 
     public void setoRemark(String oRemark) {
-        this.oRemark = oRemark == null ? null : oRemark.trim();
+        this.oRemark = oRemark;
     }
 }

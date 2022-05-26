@@ -3,15 +3,15 @@ package com.wind.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelperExample {
+public class HelpExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public HelperExample() {
-        oredCriteria = new ArrayList<Criteria>();
+    public HelpExample() {
+        oredCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -68,7 +68,7 @@ public class HelperExample {
 
         protected GeneratedCriteria() {
             super();
-            criteria = new ArrayList<Criterion>();
+            criteria = new ArrayList<>();
         }
 
         public boolean isValid() {
@@ -306,7 +306,6 @@ public class HelperExample {
     }
 
     public static class Criteria extends GeneratedCriteria {
-
         protected Criteria() {
             super();
         }

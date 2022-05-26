@@ -1,7 +1,79 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+  <!--  启动 spring 的容器-->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+
+
+
+  <!--  字符编码过滤器 注意放在所有过滤器之前-->
+  <filter>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <!--        初始化参数时 指定值-->
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharacterEncodingFilter</filter-name>
+    <!--    又有请求都处理编码格式-->
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--    使用Rest风格的URI 处理页面发过来的请求,如普通的post转delete或put-->
+  <filter>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--    处理PUT请求     HiddenHttpMethodFilter已被弃用-->
+  <filter>
+    <filter-name>formContentFilter</filter-name>
+    <filter-class>org.springframework.web.filter.FormContentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>formContentFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <!--  spring mvc 的前端控制器 拦截所有请求 -->
+  <servlet>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--指定mvc位置 如果不配置,需要有与web.xml文件同级的springDispatcherServlet-servlet.xml-->
+    <!--            <init-param>-->
+    <!--              <param-name>contextConfigLocation</param-name>-->
+    <!--              <param-value></param-value>-->
+    <!--            </init-param>-->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>dispatcherServlet</servlet-name>
+    <!--    拦截路径 所有-->
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+
 </web-app>
