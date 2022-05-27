@@ -1,23 +1,37 @@
 package com.wind.entity;
+import org.hibernate.validator.constraints.Email;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class User {
+    @Null(message = "id必须为空!")
     private Integer uId;
 
+    @Pattern(regexp = "[0-9A-Za-z]{6,18}",
+            message = "用户名不合法")
     private String uName;
 
+    @Pattern(regexp = "[0-9A-Za-z]{6,18}",
+            message = "密码不合法")
     private String uPwd;
 
+    @Size(min = 2,max = 12,
+            message = "昵称长度2-12")
     private String uNickname;
 
     private String uImg;
 
+    @Pattern(regexp = "[0-9]{11}",
+            message = "手机号不合法")
     private String uPhone;
 
+    @Email(message = "邮箱不合法")
     private String uEmail;
 
-    private String uState;
+    private String uState = "1";
 
-    private String uOpenid;
+    private String uOpenid = "0";
 
     public Integer getuId() {
         return uId;
