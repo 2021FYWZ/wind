@@ -1,11 +1,17 @@
 package com.wind.entity;
 
+import javax.validation.constraints.Pattern;
+
 public class Manager {
     private Integer mId;
 
+    @Pattern(regexp = "[0-9A-Za-z]{6,18}",
+            message = "账号不合法")
     private String mAccount;
 
-    private String mName;
+    @Pattern(regexp = "[0-9A-Za-z]{6,18}",
+            message = "密码不合法")
+    private String mPwd;
 
     public Integer getmId() {
         return mId;
@@ -23,11 +29,11 @@ public class Manager {
         this.mAccount = mAccount;
     }
 
-    public String getmName() {
-        return mName;
+    public String getmPwd() {
+        return mPwd;
     }
 
-    public void setmName(String mName) {
-        this.mName = mName;
+    public void setmPwd(String mPwd) {
+        this.mPwd = mPwd;
     }
 }

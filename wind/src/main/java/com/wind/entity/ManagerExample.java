@@ -234,73 +234,73 @@ public class ManagerExample {
             return (Criteria) this;
         }
 
-        public Criteria andMNameIsNull() {
-            addCriterion("m_name is null");
+        public Criteria andMPwdIsNull() {
+            addCriterion("m_pwd is null");
             return (Criteria) this;
         }
 
-        public Criteria andMNameIsNotNull() {
-            addCriterion("m_name is not null");
+        public Criteria andMPwdIsNotNull() {
+            addCriterion("m_pwd is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMNameEqualTo(String value) {
-            addCriterion("m_name =", value, "mName");
+        public Criteria andMPwdEqualTo(String value) {
+            addCriterion("m_pwd =", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameNotEqualTo(String value) {
-            addCriterion("m_name <>", value, "mName");
+        public Criteria andMPwdNotEqualTo(String value) {
+            addCriterion("m_pwd <>", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameGreaterThan(String value) {
-            addCriterion("m_name >", value, "mName");
+        public Criteria andMPwdGreaterThan(String value) {
+            addCriterion("m_pwd >", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameGreaterThanOrEqualTo(String value) {
-            addCriterion("m_name >=", value, "mName");
+        public Criteria andMPwdGreaterThanOrEqualTo(String value) {
+            addCriterion("m_pwd >=", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameLessThan(String value) {
-            addCriterion("m_name <", value, "mName");
+        public Criteria andMPwdLessThan(String value) {
+            addCriterion("m_pwd <", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameLessThanOrEqualTo(String value) {
-            addCriterion("m_name <=", value, "mName");
+        public Criteria andMPwdLessThanOrEqualTo(String value) {
+            addCriterion("m_pwd <=", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameLike(String value) {
-            addCriterion("m_name like", value, "mName");
+        public Criteria andMPwdLike(String value) {
+            addCriterion("m_pwd like", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameNotLike(String value) {
-            addCriterion("m_name not like", value, "mName");
+        public Criteria andMPwdNotLike(String value) {
+            addCriterion("m_pwd not like", value, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameIn(List<String> values) {
-            addCriterion("m_name in", values, "mName");
+        public Criteria andMPwdIn(List<String> values) {
+            addCriterion("m_pwd in", values, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameNotIn(List<String> values) {
-            addCriterion("m_name not in", values, "mName");
+        public Criteria andMPwdNotIn(List<String> values) {
+            addCriterion("m_pwd not in", values, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameBetween(String value1, String value2) {
-            addCriterion("m_name between", value1, value2, "mName");
+        public Criteria andMPwdBetween(String value1, String value2) {
+            addCriterion("m_pwd between", value1, value2, "mPwd");
             return (Criteria) this;
         }
 
-        public Criteria andMNameNotBetween(String value1, String value2) {
-            addCriterion("m_name not between", value1, value2, "mName");
+        public Criteria andMPwdNotBetween(String value1, String value2) {
+            addCriterion("m_pwd not between", value1, value2, "mPwd");
             return (Criteria) this;
         }
     }

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.wind.entity.Manager">
     <id column="m_id" jdbcType="INTEGER" property="mId" />
     <result column="m_account" jdbcType="VARCHAR" property="mAccount" />
-    <result column="m_name" jdbcType="VARCHAR" property="mName" />
+    <result column="m_pwd" jdbcType="VARCHAR" property="mPwd" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +65,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    m_id, m_account, m_name
+    m_id, m_account, m_pwd
   </sql>
   <select id="selectByExample" parameterType="com.wind.entity.ManagerExample" resultMap="BaseResultMap">
     select
@@ -98,9 +98,9 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.wind.entity.Manager">
-    insert into wmanager (m_id, m_account, m_name
+    insert into wmanager (m_id, m_account, m_pwd
       )
-    values (#{mId,jdbcType=INTEGER}, #{mAccount,jdbcType=VARCHAR}, #{mName,jdbcType=VARCHAR}
+    values (#{mId,jdbcType=INTEGER}, #{mAccount,jdbcType=VARCHAR}, #{mPwd,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.wind.entity.Manager">
@@ -112,8 +112,8 @@
       <if test="mAccount != null">
         m_account,
       </if>
-      <if test="mName != null">
-        m_name,
+      <if test="mPwd != null">
+        m_pwd,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -123,8 +123,8 @@
       <if test="mAccount != null">
         #{mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="mName != null">
-        #{mName,jdbcType=VARCHAR},
+      <if test="mPwd != null">
+        #{mPwd,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -143,8 +143,8 @@
       <if test="row.mAccount != null">
         m_account = #{row.mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="row.mName != null">
-        m_name = #{row.mName,jdbcType=VARCHAR},
+      <if test="row.mPwd != null">
+        m_pwd = #{row.mPwd,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="example != null">
@@ -155,7 +155,7 @@
     update wmanager
     set m_id = #{row.mId,jdbcType=INTEGER},
       m_account = #{row.mAccount,jdbcType=VARCHAR},
-      m_name = #{row.mName,jdbcType=VARCHAR}
+      m_pwd = #{row.mPwd,jdbcType=VARCHAR}
     <if test="example != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -166,8 +166,8 @@
       <if test="mAccount != null">
         m_account = #{mAccount,jdbcType=VARCHAR},
       </if>
-      <if test="mName != null">
-        m_name = #{mName,jdbcType=VARCHAR},
+      <if test="mPwd != null">
+        m_pwd = #{mPwd,jdbcType=VARCHAR},
       </if>
     </set>
     where m_id = #{mId,jdbcType=INTEGER}
@@ -175,7 +175,7 @@
   <update id="updateByPrimaryKey" parameterType="com.wind.entity.Manager">
     update wmanager
     set m_account = #{mAccount,jdbcType=VARCHAR},
-      m_name = #{mName,jdbcType=VARCHAR}
+      m_pwd = #{mPwd,jdbcType=VARCHAR}
     where m_id = #{mId,jdbcType=INTEGER}
   </update>
 </mapper>
