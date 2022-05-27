@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试文档</title>
+    <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.css">
+</head>
+<style>
+    .option, .description, .result {
+        height: 900px;
+    }
+
+    .description {
+
+    }
+
+    .result {
+    }
+
+    .api{
+        background-color: #e2e9f7;
+    }
+</style>
+<body>
+<div class="container overflow-hidden">
+    <div class="row gx-5">
+        <div class="col col-sm-offset-3">
+            <div class="p-3 border option">
+                <hr>
+                <p class="api">
+                    接口：http://49.234.225.78:8080/wind/user
+                </p>
+                请求参数示例<br>
+                {<br>
+                "uId": 123456,<br>
+                "uName": 123456,<br>
+                "uPwd": 123456,<br>
+                "uNickname": 123456,<br>
+                "uImg": http://123456.jpg,<br>
+                "uPhone": 123456,<br>
+                "uEmail": 123456@qq.com,<br>
+                }<br>
+                <hr>
+                响应实例<br>
+                {<br>
+                "status": 100,<br>
+                "data": {<br>
+                "name": "123456789"<br>
+                },<br>
+                "msg": "用户注册成功"<br>
+                }<br>
+                <hr>
+                <p class="api">
+                    接口：http://49.234.225.78:8080/wind/login
+                </p>
+                请求参数示例<br>
+                {<br>
+                "uName": "123456",<br>
+                "uPwd": "123456",<br>
+                }<br>
+                <hr>
+                响应实例<br>
+                {<br>
+                "status": 100,<br>
+                "data": {<br>
+                "img": "0",<br>
+                "nickname": "123456",<br>
+                "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6IjEyMzQ1NiIsImp0aSI6Ik1qaz0iLC<br>
+                JpYXQiOjE2NTM2NTE1MzMsImV4cCI6MTY1MzY1MTU2Mywic3ViIjoiMTIzNDU2In0.Yku83uU_8Jl1oCiFK-rQoBrLGjMOa8FB96m2a6mkOCQ"<br>
+                },<br>
+                "msg": "用户登录成功"<br>
+                }<br>
+            </div>
+        </div>
+        <!--        <div class="col-lg-4">-->
+        <!--            <div class="p-3 border description">-->
+        <!--                <p>选项</p>-->
+        <!--                <div class="row">-->
+        <!--                    <form id="registerForm">-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="username" class="form-label">用户名</label>-->
+        <!--                            <input type="text" class="form-control" name="uName" id="username">-->
+        <!--                            <div class="form-text">6-18位数字或英文字母</div>-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="password" class="form-label">密码</label>-->
+        <!--                            <input type="password" class="form-control" name="uPwd" id="password">-->
+        <!--                            <div class="form-text">6-18位数字或英文字母</div>-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="nickname" class="form-label">昵称</label>-->
+        <!--                            <input type="text" class="form-control" name="uNickname" id="nickname">-->
+        <!--                            <div class="form-text">长度2-12</div>-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="img" class="form-label">头像</label>-->
+        <!--                            <input type="text" class="form-control" name="uImg" id="img">-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="phone" class="form-label">手机号</label>-->
+        <!--                            <input type="text" class="form-control" name="uPhone" id="phone">-->
+        <!--                            <div class="form-text">长度2-12</div>-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="email" class="form-label">邮箱</label>-->
+        <!--                            <input type="email" class="form-control" name="uEmail" id="email">-->
+        <!--                        </div>-->
+        <!--                        <button type="button" class="btn btn-primary" onclick="register()">注册</button>-->
+        <!--                    </form>-->
+        <!--                </div>-->
+        <!--                <div class="row">-->
+        <!--                    <form id="loginForm">-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="loginN" class="form-label">用户名</label>-->
+        <!--                            <input type="text" class="form-control" name="uName" id="loginN">-->
+        <!--                            <div class="form-text">6-18位数字或英文字母</div>-->
+        <!--                        </div>-->
+        <!--                        <div class="mb-3">-->
+        <!--                            <label for="loginP" class="form-label">密码</label>-->
+        <!--                            <input type="password" class="form-control" name="uPwd" id="loginP">-->
+        <!--                            <div class="form-text">6-18位数字或英文字母</div>-->
+        <!--                        </div>-->
+        <!--                        <button type="button" class="btn btn-primary" onclick="login()">登录</button>-->
+        <!--                    </form>-->
+        <!--                </div>-->
+        <!--                <div class="row">-->
+        <!--                    <button type="button" class="btn btn-primary" onclick="logout()">退出登录</button>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="col-sm-5">-->
+        <!--            <div class="p-3 border result">-->
+        <!--                <p>结果</p>-->
+        <!--                <p id="result"></p>-->
+        <!--            </div>-->
+        <!--        </div>-->
+    </div>
+</div>
+
+</body>
+<script src="static/jquery-3.6.0.js"></script>
+<script src="static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+<script>
+    // function register() {
+    //     $.ajax({
+    //         url: "/user",
+    //         method: "POST",
+    //         data: $("#registerForm").serialize(),
+    //         success :function (resp) {
+    //             const res = $("#result");
+    //             res.text('')
+    //             console.log(resp)
+    //             res.text(JSON.stringify(resp))
+    //         },
+    //     },"json");
+    // }
+    // function login() {
+    //     $.ajax({
+    //         url: "/login",
+    //         method: "POST",
+    //         data: $("#loginForm").serialize(),
+    //         success :function (resp) {
+    //             const res = $("#result");
+    //             res.text('')
+    //             console.log(resp)
+    //             res.text(JSON.stringify(resp))
+    //         },
+    //     },"json");
+    // }
+    // function logout() {
+    //     $.ajax({
+    //         url: "/logout",
+    //         method: "POST",
+    //         success :function (resp) {
+    //             const res = $("#result");
+    //             res.text('')
+    //             console.log(resp)
+    //             res.text(JSON.stringify(resp))
+    //         },
+    //     },"json");
+    // }
+
+</script>
+</html>

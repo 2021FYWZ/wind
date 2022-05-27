@@ -104,4 +104,19 @@ public class User {
     public void setuOpenid(String uOpenid) {
         this.uOpenid = uOpenid;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uId=" + uId +
+                ", uName='" + uName + '\'' +
+                ", uPwd='" + uPwd + '\'' +
+                ", uNickname='" + uNickname + '\'' +
+                ", uImg='" + uImg + '\'' +
+                ", uPhone='" + uPhone + '\'' +
+                ", uEmail='" + uEmail + '\'' +
+                ", uState='" + uState + '\'' +
+                ", uOpenid='" + uOpenid + '\'' +
+                '}';
+    }
 }

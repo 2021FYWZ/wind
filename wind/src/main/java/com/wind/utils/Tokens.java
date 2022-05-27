@@ -1,19 +1,19 @@
 package com.wind.utils;
 
-import com.wind.entity.Manager;
 import com.wind.entity.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.util.Base64Utils;
+
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.security.Key;
 import java.util.Date;
 
 public class Tokens {
-    private static final Key KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);;
+    private static final String KEY = "wind";
 
     /**
      * 生成用户token令牌
@@ -27,16 +27,7 @@ public class Tokens {
                 .setId(id)// 加密id
                 .setIssuedAt(new Date(System.currentTimeMillis()))// current time 生效时间
                 .setExpiration(new Date(System.currentTimeMillis() + 30 * 1000))// expiration time 过期时间 ms
-                .signWith(SignatureAlgorithm.HS256, KEY)
-                .compact();
-    }
-    public static String createToken(Manager manager){
-        String id = Base64Utils.encodeToString(manager.getmId().toString().getBytes());// 加密id
-        return Jwts.builder()
-                .claim("mAccount", manager.getmAccount()) // name
-                .setId(id)// 加密id
-                .setIssuedAt(new Date(System.currentTimeMillis()))// current time 生效时间
-                .setExpiration(new Date(System.currentTimeMillis() + 30 * 1000))// expiration time 过期时间 ms
+                .setSubject("123456")// nickname
                 .signWith(SignatureAlgorithm.HS256, KEY)
                 .compact();
     }

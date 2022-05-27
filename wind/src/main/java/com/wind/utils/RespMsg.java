@@ -9,8 +9,8 @@ import java.util.Map;
  * 响应处理结果、信息、结果数据Map
  */
 public class RespMsg {
-    // 响应代码
-    private int code;
+    // 响应状态
+    private int status;
 
     // 响应信息
     private String Msg;
@@ -18,17 +18,10 @@ public class RespMsg {
     // 响应数据
     private Map<String, Object> data = new HashMap<>();
 
-    public static RespMsg success(){
+    public static RespMsg result(int status, String message){
         RespMsg respMsg = new RespMsg();
-        respMsg.setCode(1);
-        respMsg.setMsg("处理成功");
-        return respMsg;
-    }
-
-    public static RespMsg fail(){
-        RespMsg respMsg = new RespMsg();
-        respMsg.setCode(0);
-        respMsg.setMsg("处理失败");
+        respMsg.setStatus(status);
+        respMsg.setMsg(message);
         return respMsg;
     }
 
@@ -37,12 +30,12 @@ public class RespMsg {
         return this;
     }
 
-    public int getCode() {
-        return code;
+    public int getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMsg() {
