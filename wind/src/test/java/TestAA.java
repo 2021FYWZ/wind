@@ -6,7 +6,6 @@ import java.security.Key;
 
 public class TestAA {
 
-
     @Test
     public void test() {
         Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
