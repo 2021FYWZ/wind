@@ -32,7 +32,7 @@
 				  <text class="len" @tap="logins()">登录</text>
 			  </view>
 			  <!-- 登录按钮 -->
-			  <view class="loginBtnView" @click="login">
+			  <view class="loginBtnView" @click="login()">
 				  注册
 			  </view>
 			  <!-- 微信图标 -->

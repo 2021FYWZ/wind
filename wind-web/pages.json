@@ -1,6 +1,27 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/index/index",
+			"style": {
+				"backgroundColorTop":"#FFFFFF",
+				"navigationBarTitleText": "风校园生活圈",
+				"enablePullDownRefresh": false,
+				"backgroundColor":"#FFFFFF"
+			}
+		},
+		{
+		    "path" :"pages/myuser/myuser",
+		    "style" :                                                                                    
+		    {
+				"navigationBarBackgroundColor":"#F5C92C",
+		        "navigationBarTitleText": "我的",
+				"navigationStyle":"custom",
+		        "enablePullDownRefresh": false,
+				"backgroundColor":"#F7F7F7"
+		    }
+		    
+		},
+		{
 		    "path" : "pages/login/login",
 		    "style" :                                                                                    
 		    {
@@ -22,16 +43,145 @@
 			}
 		},
 		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
+            "path" : "pages/myuser/myuser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/puls/puls",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/feedback/feedback",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "反馈意见",
+				"navigationBarTextStyle":"black",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/feedback/minfeedback/minfeedback",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "反馈意见",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/help/help",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "帮助",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/help/help1/help1",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/help/help2/help2",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/help/help3/help3",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/help/help4/help4",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/set/set",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/set/reset/reset",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/set/bind/bind",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar":{
+		"color":"#707070",
+		"selectedColor":"#1296db",
+		"borderStyle":"#fff",
+		"backgroundColor":"#fff",
+		"list":[
+			{
+				"pagePath":"pages/index/index",
+				"text":"首页",
+				"iconPath":"static/首页logo灰.jpg",
+				"selectedIconPath":"static/首页小房子.jpg"
+			},
+			{
+				"pagePath":"pages/puls/puls",
+				"text":"",
+				"iconPath":"static/加号logo.jpg",
+				"selectedIconPath":"static/加号logo.jpg"
+			},
+			{
+				"pagePath":"pages/myuser/myuser",
+				"text":"我的",
+				"iconPath":"static/我的灰.png",
+				"selectedIconPath":"static/我的logo.jpg"
+			}
+		]
 	}
 }
