@@ -80,4 +80,23 @@ public class UserController {
                 .add("id", uLogin.getuId())
                 .add("img", uLogin.getuImg());
     }
+
+    // 修改昵称
+    @RequestMapping(value = "/user/nickname", method = RequestMethod.POST)
+    @ResponseBody
+    public RespMsg editNickname(@RequestParam(value = "uId", defaultValue = "")Integer uId,
+                                @RequestParam(value = "newNickname", defaultValue = "")String newNickname,
+                                @RequestParam(value = "token", defaultValue = "")String token){
+        if (newNickname != null && newNickname.length() >= 2 && newNickname.length() <= 12 && uId != null && token != null){
+            if (Tokens.isMatched(token, uId)){
+                boolean b = userService.editNickname(newNickname, uId);
+                if (b){
+                    return RespMsg.result(RespStatus.SUCCESS_EDIT_NICKNAME.getStatus(), RespStatus.SUCCESS_EDIT_NICKNAME.getMessage());
+                }
+                return RespMsg.result(RespStatus.FAIL_EDIT_NICKNAME.getStatus(), RespStatus.FAIL_EDIT_NICKNAME.getMessage());
+            }
+        }
+        return RespMsg.result(RespStatus.ILLEGAL_PARAMS.getStatus(), RespStatus.ILLEGAL_PARAMS.getMessage());
+    }
+    
 }

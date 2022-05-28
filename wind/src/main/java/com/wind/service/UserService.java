@@ -7,6 +7,7 @@ import com.wind.utils.Tokens;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
 import java.util.List;
 
 @Service
@@ -32,6 +33,7 @@ public class UserService {
         List<User> users = userMapper.selectByExample(userExample);
         return users != null;
     }
+
     public boolean isExist(int uId) {
         UserExample userExample = new UserExample();
         UserExample.Criteria criteria = userExample.createCriteria();
@@ -55,5 +57,21 @@ public class UserService {
 
     public boolean isLogin(String token) {
         return Tokens.isExpiration(token);
+    }
+
+    // 修改昵称
+    public boolean editNickname(String newNickname, Integer uId) {
+        User user = new User();
+        user.setuNickname(newNickname);
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUIdEqualTo(uId);
+        try {
+            userMapper.updateByExampleSelective(user, userExample);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
