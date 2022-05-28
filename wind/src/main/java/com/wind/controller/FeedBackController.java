@@ -6,11 +6,13 @@ import com.wind.service.UserService;
 import com.wind.utils.ParamsErrors;
 import com.wind.utils.RespMsg;
 import com.wind.utils.RespStatus;
+import com.wind.utils.Tokens;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServlet;
@@ -26,20 +28,17 @@ public class FeedBackController {
 
     @RequestMapping(value = "/feedback", method = RequestMethod.POST)
     @ResponseBody
-    public RespMsg feedback(@Valid Feedback feedback, BindingResult result, HttpServletRequest request) {
+    public RespMsg feedback(@Valid Feedback feedback,
+                            BindingResult result,
+                            @RequestParam(value = "token", defaultValue = "")String token) {
 
         // 检查参数
         if (result.hasErrors()) {
             return ParamsErrors.getErrorsMsg(result);
         }
-        String regExp = "[0-9]+";
-        if (!feedback.getuId().toString().matches(regExp)) {
-            return RespMsg.result(RespStatus.ILLEGAL_PARAMS.getStatus(), RespStatus.ILLEGAL_PARAMS.getMessage()).add("params", feedback);
-        }
-
         // 检查用户
-        if (!userService.isExist(feedback.getuId())) {
-            return RespMsg.result(RespStatus.USER_NOT_EXISTS.getStatus(), RespStatus.USER_NOT_EXISTS.getMessage());
+        if (Tokens.isMatched(token, feedback.getuId())) {
+            return RespMsg.result(RespStatus.ILLEGAL_PARAMS.getStatus(), RespStatus.ILLEGAL_PARAMS.getMessage());
         }
         // 添加反馈
         try{
@@ -48,7 +47,7 @@ public class FeedBackController {
                 // 添加失败
                 return RespMsg.result(RespStatus.FAIL_ADD_FEEDBACK.getStatus(), RespStatus.FAIL_ADD_FEEDBACK.getMessage());
             }
-            return RespMsg.result(RespStatus.SUCCESS_ADD_FEEDBACK.getStatus(), RespStatus.SUCCESS_ADD_FEEDBACK.getMessage());
+            return RespMsg.result(RespStatus.SUCCESS_ADD_FEEDBACK.getStatus(), RespStatus.SUCCESS_ADD_FEEDBACK.getMessage()).add("data", feedback);
         }catch (Exception e){
             e.printStackTrace();
             // 添加失败

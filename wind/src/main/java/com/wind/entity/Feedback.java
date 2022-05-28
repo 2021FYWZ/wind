@@ -1,8 +1,9 @@
 package com.wind.entity;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Feedback {
     private Integer fId;
@@ -10,7 +11,7 @@ public class Feedback {
     @NotNull(message = "id不能为空")
     private Integer uId;
 
-    private String fDate;
+    private String fDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
     private String fIp;
 

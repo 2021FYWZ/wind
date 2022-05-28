@@ -108,6 +108,7 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
+        
 
         <!--    JSTL是apache对EL表达式的扩展（也就是说JSTL依赖EL），JSTL是标签语言！
         JSTL标签使用起来非常方便，它与JSP动作标签一样，只不过它不是JSP内置的标签，需要我们自己导包，
@@ -131,11 +132,11 @@
 
 
         <!--        分页插件-->
-<!--        <dependency>-->
-<!--            <groupId>com.github.pagehelper</groupId>-->
-<!--            <artifactId>pagehelper</artifactId>-->
-<!--            <version>5.3.0</version>-->
-<!--        </dependency>-->
+                <dependency>
+                    <groupId>com.github.pagehelper</groupId>
+                    <artifactId>pagehelper</artifactId>
+                    <version>5.3.0</version>
+                </dependency>
 
 
         <!--        转json工具-->

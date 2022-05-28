@@ -37,14 +37,14 @@ public class ManagerController {
 
         // 错误 存在管理员
         if (managerService.isExist(manager.getmAccount())) {
-            return RespMsg.result(RespStatus.MANAGER_ALREADY_EXISTS.getStatus(), RespStatus.MANAGER_ALREADY_EXISTS.getMessage());
+            return RespMsg.result(RespStatus.MANAGER_ALREADY_EXISTS.getStatus(), RespStatus.MANAGER_ALREADY_EXISTS.getMessage()).add("data", manager);
         }
 
         // 注册
         if (!managerService.addManager(manager)) {
             return RespMsg.result(RespStatus.NEW_MANAGER_EXCEPTION.getStatus(), RespStatus.NEW_MANAGER_EXCEPTION.getMessage());
         }
-        return RespMsg.result(RespStatus.NEW_MANAGER_SUCCESS.getStatus(), RespStatus.NEW_MANAGER_SUCCESS.getMessage()).add("name", manager.getmAccount());
+        return RespMsg.result(RespStatus.NEW_MANAGER_SUCCESS.getStatus(), RespStatus.NEW_MANAGER_SUCCESS.getMessage()).add("account", manager.getmAccount());
     }
 
 

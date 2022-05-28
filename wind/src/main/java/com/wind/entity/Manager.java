@@ -36,4 +36,13 @@ public class Manager {
     public void setmPwd(String mPwd) {
         this.mPwd = mPwd;
     }
+
+    @Override
+    public String toString() {
+        return "Manager{" +
+                "mId=" + mId +
+                ", mAccount='" + mAccount + '\'' +
+                ", mPwd='" + mPwd + '\'' +
+                '}';
+    }
 }

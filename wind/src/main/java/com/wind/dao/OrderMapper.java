@@ -18,7 +18,13 @@ public interface OrderMapper {
 
     List<Order> selectByExample(OrderExample example);
 
+    List<Order> selectByKeyword(String keyword);
+
+    List<Order> selectByExampleWithUser(OrderExample example);
+
     Order selectByPrimaryKey(Integer oId);
+
+    Order selectByPrimaryKeyWithUser(Integer oId);
 
     int updateByExampleSelective(@Param("row") Order row, @Param("example") OrderExample example);
 

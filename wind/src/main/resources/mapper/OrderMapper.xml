@@ -1,291 +1,370 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wind.dao.OrderMapper">
-  <resultMap id="BaseResultMap" type="com.wind.entity.Order">
-    <id column="o_id" jdbcType="INTEGER" property="oId" />
-    <result column="u_id" jdbcType="INTEGER" property="uId" />
-    <result column="o_contatcts" jdbcType="VARCHAR" property="oContatcts" />
-    <result column="o_phone" jdbcType="VARCHAR" property="oPhone" />
-    <result column="o_address" jdbcType="VARCHAR" property="oAddress" />
-    <result column="o_price" jdbcType="DECIMAL" property="oPrice" />
-    <result column="o_packsge" jdbcType="VARCHAR" property="oPacksge" />
-    <result column="o_date" jdbcType="DATE" property="oDate" />
-    <result column="o_state" jdbcType="INTEGER" property="oState" />
-    <result column="o_remark" jdbcType="VARCHAR" property="oRemark" />
-  </resultMap>
-  <sql id="Example_Where_Clause">
-    <where>
-      <foreach collection="oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+    <resultMap id="BaseResultMap" type="com.wind.entity.Order">
+        <id column="o_id" jdbcType="INTEGER" property="oId"/>
+        <result column="u_id" jdbcType="INTEGER" property="uId"/>
+        <result column="a_id" jdbcType="INTEGER" property="aId"/>
+        <result column="o_contatcts" jdbcType="VARCHAR" property="oContatcts"/>
+        <result column="o_phone" jdbcType="VARCHAR" property="oPhone"/>
+        <result column="o_address" jdbcType="VARCHAR" property="oAddress"/>
+        <result column="o_price" jdbcType="DECIMAL" property="oPrice"/>
+        <result column="o_package" jdbcType="INTEGER" property="oPackage"/>
+        <result column="o_date" jdbcType="VARCHAR" property="oDate"/>
+        <result column="o_state" jdbcType="INTEGER" property="oState"/>
+        <result column="o_remark" jdbcType="VARCHAR" property="oRemark"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause">
-    <where>
-      <foreach collection="example.oredCriteria" item="criteria" separator="or">
-        <if test="criteria.valid">
-          <trim prefix="(" prefixOverrides="and" suffix=")">
-            <foreach collection="criteria.criteria" item="criterion">
-              <choose>
-                <when test="criterion.noValue">
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue">
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue">
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue">
-                  and ${criterion.condition}
-                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List">
-    o_id, u_id, o_contatcts, o_phone, o_address, o_price, o_packsge, o_date, o_state, 
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    o_id, u_id, a_id, o_contatcts, o_phone, o_address, o_price, o_package, o_date, o_state, 
     o_remark
   </sql>
-  <select id="selectByExample" parameterType="com.wind.entity.OrderExample" resultMap="BaseResultMap">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from worder
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from worder
-    where o_id = #{oId,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByExample" parameterType="com.wind.entity.OrderExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from worder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from worder
+        where o_id = #{oId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from worder
     where o_id = #{oId,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wind.entity.OrderExample">
-    delete from worder
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.wind.entity.Order">
-    insert into worder (o_id, u_id, o_contatcts, 
-      o_phone, o_address, o_price, 
-      o_packsge, o_date, o_state, 
-      o_remark)
-    values (#{oId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{oContatcts,jdbcType=VARCHAR}, 
-      #{oPhone,jdbcType=VARCHAR}, #{oAddress,jdbcType=VARCHAR}, #{oPrice,jdbcType=DECIMAL}, 
-      #{oPacksge,jdbcType=VARCHAR}, #{oDate,jdbcType=DATE}, #{oState,jdbcType=INTEGER}, 
-      #{oRemark,jdbcType=VARCHAR})
+    <delete id="deleteByExample" parameterType="com.wind.entity.OrderExample">
+        delete from worder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.wind.entity.Order">
+    insert into worder (o_id, u_id, a_id, 
+      o_contatcts, o_phone, o_address, 
+      o_price, o_package, o_date, 
+      o_state, o_remark)
+    values (#{oId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{aId,jdbcType=INTEGER}, 
+      #{oContatcts,jdbcType=VARCHAR}, #{oPhone,jdbcType=VARCHAR}, #{oAddress,jdbcType=VARCHAR}, 
+      #{oPrice,jdbcType=DECIMAL}, #{oPackage,jdbcType=INTEGER}, #{oDate,jdbcType=VARCHAR}, 
+      #{oState,jdbcType=INTEGER}, #{oRemark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wind.entity.Order">
-    insert into worder
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="oId != null">
-        o_id,
-      </if>
-      <if test="uId != null">
-        u_id,
-      </if>
-      <if test="oContatcts != null">
-        o_contatcts,
-      </if>
-      <if test="oPhone != null">
-        o_phone,
-      </if>
-      <if test="oAddress != null">
-        o_address,
-      </if>
-      <if test="oPrice != null">
-        o_price,
-      </if>
-      <if test="oPacksge != null">
-        o_packsge,
-      </if>
-      <if test="oDate != null">
-        o_date,
-      </if>
-      <if test="oState != null">
-        o_state,
-      </if>
-      <if test="oRemark != null">
-        o_remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="oId != null">
-        #{oId,jdbcType=INTEGER},
-      </if>
-      <if test="uId != null">
-        #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="oContatcts != null">
-        #{oContatcts,jdbcType=VARCHAR},
-      </if>
-      <if test="oPhone != null">
-        #{oPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="oAddress != null">
-        #{oAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="oPrice != null">
-        #{oPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="oPacksge != null">
-        #{oPacksge,jdbcType=VARCHAR},
-      </if>
-      <if test="oDate != null">
-        #{oDate,jdbcType=DATE},
-      </if>
-      <if test="oState != null">
-        #{oState,jdbcType=INTEGER},
-      </if>
-      <if test="oRemark != null">
-        #{oRemark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.wind.entity.OrderExample" resultType="java.lang.Long">
-    select count(*) from worder
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map">
-    update worder
-    <set>
-      <if test="row.oId != null">
-        o_id = #{row.oId,jdbcType=INTEGER},
-      </if>
-      <if test="row.uId != null">
+    <insert id="insertSelective" parameterType="com.wind.entity.Order">
+        insert into worder
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="oId != null">
+                o_id,
+            </if>
+            <if test="uId != null">
+                u_id,
+            </if>
+            <if test="aId != null">
+                a_id,
+            </if>
+            <if test="oContatcts != null">
+                o_contatcts,
+            </if>
+            <if test="oPhone != null">
+                o_phone,
+            </if>
+            <if test="oAddress != null">
+                o_address,
+            </if>
+            <if test="oPrice != null">
+                o_price,
+            </if>
+            <if test="oPackage != null">
+                o_package,
+            </if>
+            <if test="oDate != null">
+                o_date,
+            </if>
+            <if test="oState != null">
+                o_state,
+            </if>
+            <if test="oRemark != null">
+                o_remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="oId != null">
+                #{oId,jdbcType=INTEGER},
+            </if>
+            <if test="uId != null">
+                #{uId,jdbcType=INTEGER},
+            </if>
+            <if test="aId != null">
+                #{aId,jdbcType=INTEGER},
+            </if>
+            <if test="oContatcts != null">
+                #{oContatcts,jdbcType=VARCHAR},
+            </if>
+            <if test="oPhone != null">
+                #{oPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="oAddress != null">
+                #{oAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="oPrice != null">
+                #{oPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="oPackage != null">
+                #{oPackage,jdbcType=INTEGER},
+            </if>
+            <if test="oDate != null">
+                #{oDate,jdbcType=VARCHAR},
+            </if>
+            <if test="oState != null">
+                #{oState,jdbcType=INTEGER},
+            </if>
+            <if test="oRemark != null">
+                #{oRemark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.wind.entity.OrderExample" resultType="java.lang.Long">
+        select count(*) from worder
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update worder
+        <set>
+            <if test="row.oId != null">
+                o_id = #{row.oId,jdbcType=INTEGER},
+            </if>
+            <if test="row.uId != null">
+                u_id = #{row.uId,jdbcType=INTEGER},
+            </if>
+            <if test="row.aId != null">
+                a_id = #{row.aId,jdbcType=INTEGER},
+            </if>
+            <if test="row.oContatcts != null">
+                o_contatcts = #{row.oContatcts,jdbcType=VARCHAR},
+            </if>
+            <if test="row.oPhone != null">
+                o_phone = #{row.oPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="row.oAddress != null">
+                o_address = #{row.oAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="row.oPrice != null">
+                o_price = #{row.oPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="row.oPackage != null">
+                o_package = #{row.oPackage,jdbcType=INTEGER},
+            </if>
+            <if test="row.oDate != null">
+                o_date = #{row.oDate,jdbcType=VARCHAR},
+            </if>
+            <if test="row.oState != null">
+                o_state = #{row.oState,jdbcType=INTEGER},
+            </if>
+            <if test="row.oRemark != null">
+                o_remark = #{row.oRemark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update worder
+        set o_id = #{row.oId,jdbcType=INTEGER},
         u_id = #{row.uId,jdbcType=INTEGER},
-      </if>
-      <if test="row.oContatcts != null">
+        a_id = #{row.aId,jdbcType=INTEGER},
         o_contatcts = #{row.oContatcts,jdbcType=VARCHAR},
-      </if>
-      <if test="row.oPhone != null">
         o_phone = #{row.oPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="row.oAddress != null">
         o_address = #{row.oAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="row.oPrice != null">
         o_price = #{row.oPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="row.oPacksge != null">
-        o_packsge = #{row.oPacksge,jdbcType=VARCHAR},
-      </if>
-      <if test="row.oDate != null">
-        o_date = #{row.oDate,jdbcType=DATE},
-      </if>
-      <if test="row.oState != null">
+        o_package = #{row.oPackage,jdbcType=INTEGER},
+        o_date = #{row.oDate,jdbcType=VARCHAR},
         o_state = #{row.oState,jdbcType=INTEGER},
-      </if>
-      <if test="row.oRemark != null">
-        o_remark = #{row.oRemark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map">
-    update worder
-    set o_id = #{row.oId,jdbcType=INTEGER},
-      u_id = #{row.uId,jdbcType=INTEGER},
-      o_contatcts = #{row.oContatcts,jdbcType=VARCHAR},
-      o_phone = #{row.oPhone,jdbcType=VARCHAR},
-      o_address = #{row.oAddress,jdbcType=VARCHAR},
-      o_price = #{row.oPrice,jdbcType=DECIMAL},
-      o_packsge = #{row.oPacksge,jdbcType=VARCHAR},
-      o_date = #{row.oDate,jdbcType=DATE},
-      o_state = #{row.oState,jdbcType=INTEGER},
-      o_remark = #{row.oRemark,jdbcType=VARCHAR}
-    <if test="example != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.Order">
-    update worder
-    <set>
-      <if test="uId != null">
-        u_id = #{uId,jdbcType=INTEGER},
-      </if>
-      <if test="oContatcts != null">
-        o_contatcts = #{oContatcts,jdbcType=VARCHAR},
-      </if>
-      <if test="oPhone != null">
-        o_phone = #{oPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="oAddress != null">
-        o_address = #{oAddress,jdbcType=VARCHAR},
-      </if>
-      <if test="oPrice != null">
-        o_price = #{oPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="oPacksge != null">
-        o_packsge = #{oPacksge,jdbcType=VARCHAR},
-      </if>
-      <if test="oDate != null">
-        o_date = #{oDate,jdbcType=DATE},
-      </if>
-      <if test="oState != null">
-        o_state = #{oState,jdbcType=INTEGER},
-      </if>
-      <if test="oRemark != null">
-        o_remark = #{oRemark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where o_id = #{oId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.wind.entity.Order">
+        o_remark = #{row.oRemark,jdbcType=VARCHAR}
+        <if test="example != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wind.entity.Order">
+        update worder
+        <set>
+            <if test="uId != null">
+                u_id = #{uId,jdbcType=INTEGER},
+            </if>
+            <if test="aId != null">
+                a_id = #{aId,jdbcType=INTEGER},
+            </if>
+            <if test="oContatcts != null">
+                o_contatcts = #{oContatcts,jdbcType=VARCHAR},
+            </if>
+            <if test="oPhone != null">
+                o_phone = #{oPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="oAddress != null">
+                o_address = #{oAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="oPrice != null">
+                o_price = #{oPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="oPackage != null">
+                o_package = #{oPackage,jdbcType=INTEGER},
+            </if>
+            <if test="oDate != null">
+                o_date = #{oDate,jdbcType=VARCHAR},
+            </if>
+            <if test="oState != null">
+                o_state = #{oState,jdbcType=INTEGER},
+            </if>
+            <if test="oRemark != null">
+                o_remark = #{oRemark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where o_id = #{oId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wind.entity.Order">
     update worder
     set u_id = #{uId,jdbcType=INTEGER},
+      a_id = #{aId,jdbcType=INTEGER},
       o_contatcts = #{oContatcts,jdbcType=VARCHAR},
       o_phone = #{oPhone,jdbcType=VARCHAR},
       o_address = #{oAddress,jdbcType=VARCHAR},
       o_price = #{oPrice,jdbcType=DECIMAL},
-      o_packsge = #{oPacksge,jdbcType=VARCHAR},
-      o_date = #{oDate,jdbcType=DATE},
+      o_package = #{oPackage,jdbcType=INTEGER},
+      o_date = #{oDate,jdbcType=VARCHAR},
       o_state = #{oState,jdbcType=INTEGER},
       o_remark = #{oRemark,jdbcType=VARCHAR}
     where o_id = #{oId,jdbcType=INTEGER}
   </update>
+
+
+    <!--联合查询 订单带上接单用户信息selectByKeyword-->
+    <sql id="WithUser_Column_List">
+        o.o_id, o.u_id, o.o_contatcts, o.o_phone, o.o_address, o.o_price,
+        o.o_package, o.o_date, o.o_remark, u.u_nickname, u.u_id, u.u_phone
+  </sql>
+    <select id="selectByExampleWithUser" resultMap="WithUserResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="WithUser_Column_List"/>
+        from wuser u join  on o.a_id = u.u_id
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKeyWithUser" resultMap="WithUserResultMap">
+        select
+        <include refid="WithUser_Column_List"/>
+        from wuser u join worder o on o.a_id = u.u_id
+        where o_id = #{oId,jdbcType=INTEGER}
+    </select>
+    <resultMap id="WithUserResultMap" type="com.wind.entity.Order">
+        <id column="o_id" jdbcType="INTEGER" property="oId"/>
+        <result column="u_id" jdbcType="INTEGER" property="uId"/>
+        <result column="a_id" jdbcType="INTEGER" property="aId"/>
+        <result column="o_contatcts" jdbcType="VARCHAR" property="oContatcts"/>
+        <result column="o_phone" jdbcType="VARCHAR" property="oPhone"/>
+        <result column="o_address" jdbcType="VARCHAR" property="oAddress"/>
+        <result column="o_price" jdbcType="DECIMAL" property="oPrice"/>
+        <result column="o_package" jdbcType="INTEGER" property="oPackage"/>
+        <result column="o_date" jdbcType="VARCHAR" property="oDate"/>
+        <result column="o_state" jdbcType="INTEGER" property="oState"/>
+        <result column="o_remark" jdbcType="VARCHAR" property="oRemark"/>
+        <!--   封装携带接单者信息-->
+        <association property="user" javaType="com.wind.entity.User">
+            <id column="u_id" property="uId"/>
+            <result column="u_nickname" jdbcType="VARCHAR" property="uNickname"/>
+            <result column="u_phone" jdbcType="VARCHAR" property="uPhone"/>
+        </association>
+    </resultMap>
+
+<!--    模糊查询-->
+    <select id="selectByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from worder
+        where 1 = 1
+
+        <if test="keyword != null and keyword != ''">
+            and
+            o_contatcts like CONCAT('%',#{keyword},'%')
+            or o_address like CONCAT('%',#{keyword},'%')
+            or o_remark like CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
 </mapper>

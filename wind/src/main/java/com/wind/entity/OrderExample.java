@@ -2,8 +2,6 @@ package com.wind.entity;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class OrderExample {
@@ -105,32 +103,6 @@ public class OrderExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andOIdIsNull() {
@@ -250,6 +222,66 @@ public class OrderExample {
 
         public Criteria andUIdNotBetween(Integer value1, Integer value2) {
             addCriterion("u_id not between", value1, value2, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdIsNull() {
+            addCriterion("a_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdIsNotNull() {
+            addCriterion("a_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdEqualTo(Integer value) {
+            addCriterion("a_id =", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdNotEqualTo(Integer value) {
+            addCriterion("a_id <>", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdGreaterThan(Integer value) {
+            addCriterion("a_id >", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("a_id >=", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdLessThan(Integer value) {
+            addCriterion("a_id <", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdLessThanOrEqualTo(Integer value) {
+            addCriterion("a_id <=", value, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdIn(List<Integer> values) {
+            addCriterion("a_id in", values, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdNotIn(List<Integer> values) {
+            addCriterion("a_id not in", values, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdBetween(Integer value1, Integer value2) {
+            addCriterion("a_id between", value1, value2, "aId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("a_id not between", value1, value2, "aId");
             return (Criteria) this;
         }
 
@@ -523,73 +555,63 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeIsNull() {
-            addCriterion("o_packsge is null");
+        public Criteria andOPackageIsNull() {
+            addCriterion("o_package is null");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeIsNotNull() {
-            addCriterion("o_packsge is not null");
+        public Criteria andOPackageIsNotNull() {
+            addCriterion("o_package is not null");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeEqualTo(String value) {
-            addCriterion("o_packsge =", value, "oPacksge");
+        public Criteria andOPackageEqualTo(Integer value) {
+            addCriterion("o_package =", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeNotEqualTo(String value) {
-            addCriterion("o_packsge <>", value, "oPacksge");
+        public Criteria andOPackageNotEqualTo(Integer value) {
+            addCriterion("o_package <>", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeGreaterThan(String value) {
-            addCriterion("o_packsge >", value, "oPacksge");
+        public Criteria andOPackageGreaterThan(Integer value) {
+            addCriterion("o_package >", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeGreaterThanOrEqualTo(String value) {
-            addCriterion("o_packsge >=", value, "oPacksge");
+        public Criteria andOPackageGreaterThanOrEqualTo(Integer value) {
+            addCriterion("o_package >=", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeLessThan(String value) {
-            addCriterion("o_packsge <", value, "oPacksge");
+        public Criteria andOPackageLessThan(Integer value) {
+            addCriterion("o_package <", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeLessThanOrEqualTo(String value) {
-            addCriterion("o_packsge <=", value, "oPacksge");
+        public Criteria andOPackageLessThanOrEqualTo(Integer value) {
+            addCriterion("o_package <=", value, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeLike(String value) {
-            addCriterion("o_packsge like", value, "oPacksge");
+        public Criteria andOPackageIn(List<Integer> values) {
+            addCriterion("o_package in", values, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeNotLike(String value) {
-            addCriterion("o_packsge not like", value, "oPacksge");
+        public Criteria andOPackageNotIn(List<Integer> values) {
+            addCriterion("o_package not in", values, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeIn(List<String> values) {
-            addCriterion("o_packsge in", values, "oPacksge");
+        public Criteria andOPackageBetween(Integer value1, Integer value2) {
+            addCriterion("o_package between", value1, value2, "oPackage");
             return (Criteria) this;
         }
 
-        public Criteria andOPacksgeNotIn(List<String> values) {
-            addCriterion("o_packsge not in", values, "oPacksge");
-            return (Criteria) this;
-        }
-
-        public Criteria andOPacksgeBetween(String value1, String value2) {
-            addCriterion("o_packsge between", value1, value2, "oPacksge");
-            return (Criteria) this;
-        }
-
-        public Criteria andOPacksgeNotBetween(String value1, String value2) {
-            addCriterion("o_packsge not between", value1, value2, "oPacksge");
+        public Criteria andOPackageNotBetween(Integer value1, Integer value2) {
+            addCriterion("o_package not between", value1, value2, "oPackage");
             return (Criteria) this;
         }
 
@@ -603,53 +625,63 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andODateEqualTo(Date value) {
-            addCriterionForJDBCDate("o_date =", value, "oDate");
+        public Criteria andODateEqualTo(String value) {
+            addCriterion("o_date =", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("o_date <>", value, "oDate");
+        public Criteria andODateNotEqualTo(String value) {
+            addCriterion("o_date <>", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateGreaterThan(Date value) {
-            addCriterionForJDBCDate("o_date >", value, "oDate");
+        public Criteria andODateGreaterThan(String value) {
+            addCriterion("o_date >", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("o_date >=", value, "oDate");
+        public Criteria andODateGreaterThanOrEqualTo(String value) {
+            addCriterion("o_date >=", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateLessThan(Date value) {
-            addCriterionForJDBCDate("o_date <", value, "oDate");
+        public Criteria andODateLessThan(String value) {
+            addCriterion("o_date <", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("o_date <=", value, "oDate");
+        public Criteria andODateLessThanOrEqualTo(String value) {
+            addCriterion("o_date <=", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateIn(List<Date> values) {
-            addCriterionForJDBCDate("o_date in", values, "oDate");
+        public Criteria andODateLike(String value) {
+            addCriterion("o_date like", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("o_date not in", values, "oDate");
+        public Criteria andODateNotLike(String value) {
+            addCriterion("o_date not like", value, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("o_date between", value1, value2, "oDate");
+        public Criteria andODateIn(List<String> values) {
+            addCriterion("o_date in", values, "oDate");
             return (Criteria) this;
         }
 
-        public Criteria andODateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("o_date not between", value1, value2, "oDate");
+        public Criteria andODateNotIn(List<String> values) {
+            addCriterion("o_date not in", values, "oDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andODateBetween(String value1, String value2) {
+            addCriterion("o_date between", value1, value2, "oDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andODateNotBetween(String value1, String value2) {
+            addCriterion("o_date not between", value1, value2, "oDate");
             return (Criteria) this;
         }
 

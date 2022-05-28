@@ -41,10 +41,10 @@
         </javaClientGenerator>
 
         <!--        指定每个表的生成策略  -->
-        <table tableName="wfeedback" domainObjectName="Feedback"/>
+<!--        <table tableName="wfeedback" domainObjectName="Feedback"/>-->
 <!--        <table tableName="whelp" domainObjectName="Help"/>-->
 <!--        <table tableName="wmanager" domainObjectName="Manager"/>-->
-<!--        <table tableName="worder" domainObjectName="Order"/>-->
+        <table tableName="worder" domainObjectName="Order"/>
 <!--        <table tableName="wuser" domainObjectName="User"/>-->
     </context>
 

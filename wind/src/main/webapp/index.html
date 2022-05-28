@@ -17,7 +17,7 @@
     .result {
     }
 
-    .api{
+    .api {
         background-color: #e2e9f7;
     }
 </style>
@@ -27,51 +27,427 @@
         <div class="col col-sm-offset-2">
             <div class="p-3 border option">
                 <hr>
-                <p class="api">
-                    接口：http://49.234.225.78:8080/wind/user   (请求方式 POST)
+                <h3>
+                    <span class="api">
+                        用户注册
+                    </span>
+                    http://49.234.225.78:8080/wind/user POST
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4><br>
+                <pre>
+                    <code>
+{
+    "uId": 123456,
+    "uName": 123456,
+    "uPwd": 123456,
+    "uNickname": 123456,
+    "uImg": http://123456.jpg,
+    "uPhone": 123456,
+    "uEmail": 123456@qq.com,
+}</code>
+                </pre>
+                <h4>响应示例</h4><br>
+                <pre>
+    <code>
+{
+    "status": 100,
+    "data": {
+        "name": "123456789"
+    },
+    "msg": "用户注册成功"
+}
+    </code>
+</pre>
+                <hr>
+                <h3>
+                    <span class="api">
+                        用户登录
+                    </span>
+                    http://49.234.225.78:8080/wind/login POST
+                </h3>
+                <h4>请求参数示例</h4><br>
+                <pre>
+    <code>
+{
+    "uName": "123456",
+    "uPwd": "123456",
+}
+    </code>
+</pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 100,
+    "data": {
+        "img": "0",
+        "nickname": "123456",
+        "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6IjEyMzQ1NiIsImp0aSI6Ik1qaz0iLCJpYXQiOjE2NTM2NTE1MzMsImV4cCI6MTY1MzY1MTU2Mywic3ViIjoiMTIzNDU2In0.Yku83uU_8Jl1oCiFK-rQoBrLGjMOa8FB96m2a6mkOCQ"
+    },
+    "msg": "用户登录成功"
+}
+                    </code>
+                </pre>
+                <hr>
+                <h3>
+                    <span class="api">
+                         反馈
+                    </span>
+                    http://49.234.225.78:8080/wind/feedback POST
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4>
+                <pre>
+                    <code>
+{
+    "uId": "2",
+    "fContent": "测试反馈",
+    "fIp": "",
+    "fInfo": "",
+    "fVersion": ""
+}
+                    </code>
+                </pre>
+                <h4>
+                    响应示例
+                </h4>
+                <pre>
+                    <code>
+{
+    "status": 104,
+    "data": {
+        "data": {
+            "fId": null,
+            "uId": 2,
+            "fDate": "2022-05-28 20:16:37",
+            "fIp": "",
+            "fContent": "测试反馈",
+            "fInfo": "",
+            "fVersion": ""
+        }
+    },
+    "msg": "添加反馈成功"
+}
+                    </code>
+                </pre>
+                <hr>
+                <h3>
+                    <span class="api">
+                         管理员注册
+                    </span>
+                    http://49.234.225.78:8080/wind/wAdmin POST
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4>
+                <pre>
+                    <code>
+{
+    "mAccount": "12345688",
+    "mPwd": "123456"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 102,
+    "data": {
+        "account": "12345688"
+    },
+    "msg": "管理员注册成功"
+}
+                    </code>
+                </pre>
+                <hr>
+                <h3>
+                    <span class="api">
+                         管理员登录
+                    </span>
+                    http://49.234.225.78:8080/wind/enter POST
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4>
+                <pre>
+                    <code>
+{
+    "mAccount": "12345688",
+    "mPwd": "123456"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 103,
+    "data": {
+        "account": "12345688",
+        "token": "eyJhbGciOiJIUzI1NiJ9.eyJtQWNjb3VudCI6IjEyMzQ1Njg4IiwianRpIjoiTXc9PSIsImlhdCI6MTY1Mzc0MTYzMCwiZXhwIjoxNjUzNzQxOTMwfQ.HDbDPEYU4evzkkQCvydzfNeIbP-TLKjRVrl1jvNe1fM"
+    },
+    "msg": "管理员登录成功"
+}
+                    </code>
+                </pre>
+
+                <hr>
+
+                <h3>
+                    <span class="api">
+                         发布订单
+                    </span>
+                    http://49.234.225.78:8080/wind/order POST
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4>
+                <h4>参数说明</h4>
+                <p>oPackage: 0-小包裹 1-中包裹 2-大包裹</p>
+                <pre>
+                    <code>
+{
+    "uId": "1",
+    "oContatcts": "小明",
+    "oPhone": "12345678911",
+    "oAddress": "中区2号楼",
+    "oPrice": 3,
+    "oPackage": 0,
+    "oRemark": "说明"
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6InhpYW9iYWkiLCJqdGkiOiJNZz09IiwiaWF0IjoxNjUzNzQyNDQyLCJleHAiOjE2NTM3NDI3NDJ9.cHqmCwB2lSureF9CBEvelS-VsJxO8ktS5q7RAZeQocM"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 105,
+    "data": {},
+    "msg": "添加订单成功"
+}
+                    </code>
+                </pre>
+                <hr>
+
+                <h3>
+                    <span class="api">
+                         首页查询订单
+                    </span>
+                    http://49.234.225.78:8080/wind/orders GET
+                </h3>
+                <h4>
+                    请求参数示例
+                </h4>
+                <h4>参数说明</h4>
+                <p>
+                    pn: 页码
                 </p>
-                请求参数示例<br>
-                {<br>
-                "uId": 123456,<br>
-                "uName": 123456,<br>
-                "uPwd": 123456,<br>
-                "uNickname": 123456,<br>
-                "uImg": http://123456.jpg,<br>
-                "uPhone": 123456,<br>
-                "uEmail": 123456@qq.com,<br>
-                }<br>
-                <hr>
-                响应示例<br>
-                {<br>
-                "status": 100,<br>
-                "data": {<br>
-                "name": "123456789"<br>
-                },<br>
-                "msg": "用户注册成功"<br>
-                }<br>
-                <hr>
-                <p class="api">
-                    接口：http://49.234.225.78:8080/wind/login  (请求方式 POST)
+                <p>
+                    pSize: 页长度
                 </p>
-                请求参数示例<br>
-                {<br>
-                "uName": "123456",<br>
-                "uPwd": "123456",<br>
-                }<br>
+                <p></p>
+                <pre>
+                    <code>
+{
+    "pn": "2",
+    "pSize": "2"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 106,
+    "data": {
+        "data": [
+            {
+                "oId": 11,
+                "uId": 2,
+                "aId": 1,
+                "oContatcts": "123",
+                "oPhone": "12312313212",
+                "oAddress": "小白的收货地址",
+                "oPrice": 22.00,
+                "oPackage": 2,
+                "oDate": "2000-20-20 24:26",
+                "oState": 0,
+                "oRemark": "123",
+                "user": null
+            },
+            {
+                "oId": 14,
+                "uId": 2,
+                "aId": 1,
+                "oContatcts": "123",
+                "oPhone": "12312313212",
+                "oAddress": "小白的收货地址",
+                "oPrice": 22.00,
+                "oPackage": 2,
+                "oDate": "2000-20-20 24:26",
+                "oState": 0,
+                "oRemark": "123",
+                "user": null
+            }
+        ]
+    },
+    "msg": "查询订单成功"
+}
+                    </code>
+                </pre>
                 <hr>
-                响应示例<br>
-                {<br>
-                "status": 100,<br>
-                "data": {<br>
-                "img": "0",<br>
-                "nickname": "123456",<br>
-                "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6IjEyMzQ1NiIsImp0aSI6Ik1qaz0iLC<br>
-                JpYXQiOjE2NTM2NTE1MzMsImV4cCI6MTY1MzY1MTU2Mywic3ViIjoiMTIzNDU2In0.Yku83uU_8Jl1oCiFK-rQoBrLGjMOa8FB96m2a6mkOCQ"<br>
-                },<br>
-                "msg": "用户登录成功"<br>
-                }<br>
+                <h3>
+                    <span class="api">
+                         查询用户订单
+                    </span>
+                    http://49.234.225.78:8080/wind/orders/{uId}/{oId} GET
+                </h3>
+                <h4>参数说明</h4>
+                <p>
+                    {uId}: 用户id
+                </p>
+                <p>
+                    {oId}: 用户要查询的订单id
+                </p>
+                <h4>
+                    请求参数示例
+                </h4>
+                <p>http://49.234.225.78:8080/order/2/10?token=eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6InhpYW9iYWkiLCJqdGkiOiJNZz09IiwiaWF0Ij<br>
+                    oxNjUzNzQ1NDM1LCJleHAiOjE2NTM3NDU3MzV9.eppd4rWiZgkzCIME9jvFEqh5eHVhLklKGC2rvZ0qzjk</p>
+                <pre>
+                    <code>
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6InhpYW9iYWkiLCJqdGkiOiJNZz09IiwiaWF0IjoxNjUzNzQyNDQyLCJleHAiOjE2NTM3NDI3NDJ9.cHqmCwB2lSureF9CBEvelS-VsJxO8ktS5q7RAZeQocM"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 106,
+    "data": {
+        "data": {
+            "oId": 10,
+            "uId": 2,
+            "aId": null,
+            "oContatcts": "123",
+            "oPhone": "12312313212",
+            "oAddress": "小白的收货地址",
+            "oPrice": 22.00,
+            "oPackage": 1,
+            "oDate": "2000-20-20 24:26",
+            "oState": 0,
+            "oRemark": "123",
+            "user": {
+                "uId": 2,
+                "uName": null,
+                "uPwd": null,
+                "uNickname": "小明",
+                "uImg": null,
+                "uPhone": "13012345678",
+                "uEmail": null,
+                "uState": "1",
+                "uOpenid": "0"
+            }
+        }
+    },
+    "msg": "查询订单成功"
+}
+                    </code>
+                </pre>
+
+                <hr>
+                <h3>
+                    <span class="api">
+                         查询用户对应状态订单
+                    </span>
+                    http://49.234.225.78:8080/wind/orders/{uId} GET
+                </h3>
+                <h4>参数说明</h4>
+                <p>{uId}: 用户id</p>
+                <p>status: 0-已发布（未被接单） 1-已接单（派送中） 2-待支付 3-已完成</p>
+                <h4>
+                    请求参数示例
+                </h4>
+                <p>
+                    http://49.234.225.78:8080/orders/2?status=0&token=eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6InhpYW9iYWkiLCJqdGkiOiJNZz09IiwiaW<br>
+                    F0IjoxNjUzNzQ1OTU1LCJleHAiOjE2NTM3NDYyNTV9.uRbgD6VPXHsNtIS8pUmwgHB52D73_XQbxmk23M6qGnk&pn=1&pSize=3
+                </p>
+                <pre>
+                    <code>
+{
+    "status": 0,
+    "pn": 1,
+    "pSize": 3,
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1TmFtZSI6InhpYW9iYWkiLCJqdGkiOiJNZz09IiwiaWF0IjoxNjUzNzQyNDQyLCJleHAiOjE2NTM3NDI3NDJ9.cHqmCwB2lSureF9CBEvelS-VsJxO8ktS5q7RAZeQocM"
+}
+                    </code>
+                </pre>
+                <h4>响应示例</h4>
+                <pre>
+                    <code>
+{
+    "status": 106,
+    "data": {
+        "data": [
+            {
+                "oId": 10,
+                "uId": 2,
+                "aId": 1,
+                "oContatcts": "123",
+                "oPhone": "12312313212",
+                "oAddress": "小白的收货地址",
+                "oPrice": 22.00,
+                "oPackage": 1,
+                "oDate": "2000-20-20 24:26",
+                "oState": 0,
+                "oRemark": "123",
+                "user": null
+            },
+            {
+                "oId": 11,
+                "uId": 2,
+                "aId": 1,
+                "oContatcts": "123",
+                "oPhone": "12312313212",
+                "oAddress": "小白的收货地址",
+                "oPrice": 22.00,
+                "oPackage": 2,
+                "oDate": "2000-20-20 24:26",
+                "oState": 0,
+                "oRemark": "123",
+                "user": null
+            },
+            {
+                "oId": 14,
+                "uId": 2,
+                "aId": 1,
+                "oContatcts": "123",
+                "oPhone": "12312313212",
+                "oAddress": "小白的收货地址",
+                "oPrice": 22.00,
+                "oPackage": 2,
+                "oDate": "2000-20-20 24:26",
+                "oState": 0,
+                "oRemark": "123",
+                "user": null
+            }
+        ]
+    },
+    "msg": "查询订单成功"
+}
+                    </code>
+                </pre>
             </div>
         </div>
+
+
         <!--        <div class="col-lg-4">-->
         <!--            <div class="p-3 border description">-->
         <!--                <p>选项</p>-->

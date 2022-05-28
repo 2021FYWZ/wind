@@ -50,11 +50,11 @@ public class UserController {
     public RespMsg login(User user) {
         // 参数错误
         if (user.getuName() == null || user.getuPwd() == null) {
-            return RespMsg.result(RespStatus.MISS_USER_INFO.getStatus(), RespStatus.MISS_USER_INFO.getMessage()).add("params", user);
+            return RespMsg.result(RespStatus.MISS_USER_INFO.getStatus(), RespStatus.MISS_USER_INFO.getMessage());
         }
-        String regExp = "[0-9A-Za-z]{6,18}";
-        if (!user.getuName().matches(regExp)) {
-            return RespMsg.result(RespStatus.ILLEGAL_PARAMS.getStatus(), RespStatus.ILLEGAL_PARAMS.getMessage()).add("params", user);
+        String regx = "[0-9A-Za-z]{6,18}";
+        if (!user.getuName().matches(regx)) {
+            return RespMsg.result(RespStatus.ILLEGAL_PARAMS.getStatus(), RespStatus.ILLEGAL_PARAMS.getMessage());
         }
 
         // 存在检验

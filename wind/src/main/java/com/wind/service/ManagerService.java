@@ -16,12 +16,13 @@ public class ManagerService {
     ManagerMapper managerMapper;
 
     public boolean isExist(String mAccount){
+        System.out.println(mAccount);
         if (mAccount != null) {
             ManagerExample managerExample = new ManagerExample();
             ManagerExample.Criteria criteria = managerExample.createCriteria();
             criteria.andMAccountEqualTo(mAccount);
             List<Manager> managers = managerMapper.selectByExample(managerExample);
-            return managers != null;
+            return managers.size() > 0;
         }
         return false;
     }

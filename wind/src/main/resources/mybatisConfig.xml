@@ -34,7 +34,7 @@
     </typeAliases>
 
     <!--    注册分页插件-->
-<!--    <plugins>-->
-<!--        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>-->
-<!--    </plugins>-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"/>
+    </plugins>
 </configuration>

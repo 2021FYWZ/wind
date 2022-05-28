@@ -1,28 +1,53 @@
 package com.wind.entity;
 
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Order {
     private Integer oId;
 
+    @NotNull(message = "id不能为空")
     private Integer uId;
 
+    private Integer aId;
+
+    @NotNull(message = "联系人不能为空")
     private String oContatcts;
 
+    @NotNull(message = "手机号不能为空")
     private String oPhone;
 
+    @NotNull(message = "地址不能为空")
     private String oAddress;
 
+    @NotNull(message = "价格不能为空")
     private BigDecimal oPrice;
 
-    private String oPacksge;
+    // 0 1 2 大中小
+    @NotNull(message = "包裹大小不能为空")
+    private Integer oPackage;
 
-    private Date oDate;
+    private String oDate = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDateTime.now());
 
-    private Integer oState;
+    // -1 取消 ，0 未接单(已发布)，1 派送中，2 待支付，3 已完成
+    private Integer oState = 0;
 
+    @NotNull(message = "描述信息不能为空")
     private String oRemark;
+
+    // 这里携带接单者信息
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public Integer getoId() {
         return oId;
@@ -38,6 +63,14 @@ public class Order {
 
     public void setuId(Integer uId) {
         this.uId = uId;
+    }
+
+    public Integer getaId() {
+        return aId;
+    }
+
+    public void setaId(Integer aId) {
+        this.aId = aId;
     }
 
     public String getoContatcts() {
@@ -72,19 +105,19 @@ public class Order {
         this.oPrice = oPrice;
     }
 
-    public String getoPacksge() {
-        return oPacksge;
+    public Integer getoPackage() {
+        return oPackage;
     }
 
-    public void setoPacksge(String oPacksge) {
-        this.oPacksge = oPacksge;
+    public void setoPackage(Integer oPackage) {
+        this.oPackage = oPackage;
     }
 
-    public Date getoDate() {
+    public String getoDate() {
         return oDate;
     }
 
-    public void setoDate(Date oDate) {
+    public void setoDate(String oDate) {
         this.oDate = oDate;
     }
 
