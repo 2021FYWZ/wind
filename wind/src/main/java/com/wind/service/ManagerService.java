@@ -20,7 +20,8 @@ public class ManagerService {
             ManagerExample managerExample = new ManagerExample();
             ManagerExample.Criteria criteria = managerExample.createCriteria();
             criteria.andMAccountEqualTo(mAccount);
-            return managerMapper.selectByExample(managerExample).size() > 0;
+            List<Manager> managers = managerMapper.selectByExample(managerExample);
+            return managers != null;
         }
         return false;
     }

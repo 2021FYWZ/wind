@@ -5,7 +5,7 @@ import com.wind.service.UserService;
 import com.wind.utils.RespMsg;
 import com.wind.utils.RespStatus;
 import com.wind.utils.Tokens;
-import com.wind.utils.UAndMParams;
+import com.wind.utils.ParamsErrors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -29,7 +29,7 @@ public class UserController {
 
         // 参数错误
         if (result.hasErrors()) {
-            return UAndMParams.getErrorsMsg(result);
+            return ParamsErrors.getErrorsMsg(result);
         }
 
         // 错误 存在用户
@@ -77,6 +77,7 @@ public class UserController {
                 .result(RespStatus.USER_LOGIN_SUCCESS.getStatus(), RespStatus.USER_LOGIN_SUCCESS.getMessage())
                 .add("token", token)
                 .add("nickname", uLogin.getuNickname())
+                .add("id", uLogin.getuId())
                 .add("img", uLogin.getuImg());
     }
 }

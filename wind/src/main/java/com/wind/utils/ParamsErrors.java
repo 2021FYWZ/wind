@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UAndMParams {
+public class ParamsErrors {
     public static RespMsg getErrorsMsg(BindingResult result){
         Map<String, Object> map = new HashMap<>();
         List<FieldError> fieldErrors = result.getFieldErrors();

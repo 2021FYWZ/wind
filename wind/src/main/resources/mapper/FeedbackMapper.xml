@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.wind.entity.Feedback">
     <id column="f_id" jdbcType="INTEGER" property="fId" />
     <result column="u_id" jdbcType="INTEGER" property="uId" />
-    <result column="f_date" jdbcType="DATE" property="fDate" />
+    <result column="f_date" jdbcType="VARCHAR" property="fDate" />
     <result column="f_ip" jdbcType="VARCHAR" property="fIp" />
     <result column="f_content" jdbcType="VARCHAR" property="fContent" />
     <result column="f_info" jdbcType="VARCHAR" property="fInfo" />
@@ -105,7 +105,7 @@
     insert into wfeedback (f_id, u_id, f_date, 
       f_ip, f_content, f_info, 
       f_version)
-    values (#{fId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{fDate,jdbcType=DATE}, 
+    values (#{fId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER}, #{fDate,jdbcType=VARCHAR}, 
       #{fIp,jdbcType=VARCHAR}, #{fContent,jdbcType=VARCHAR}, #{fInfo,jdbcType=VARCHAR}, 
       #{fVersion,jdbcType=VARCHAR})
   </insert>
@@ -142,7 +142,7 @@
         #{uId,jdbcType=INTEGER},
       </if>
       <if test="fDate != null">
-        #{fDate,jdbcType=DATE},
+        #{fDate,jdbcType=VARCHAR},
       </if>
       <if test="fIp != null">
         #{fIp,jdbcType=VARCHAR},
@@ -174,7 +174,7 @@
         u_id = #{row.uId,jdbcType=INTEGER},
       </if>
       <if test="row.fDate != null">
-        f_date = #{row.fDate,jdbcType=DATE},
+        f_date = #{row.fDate,jdbcType=VARCHAR},
       </if>
       <if test="row.fIp != null">
         f_ip = #{row.fIp,jdbcType=VARCHAR},
@@ -197,7 +197,7 @@
     update wfeedback
     set f_id = #{row.fId,jdbcType=INTEGER},
       u_id = #{row.uId,jdbcType=INTEGER},
-      f_date = #{row.fDate,jdbcType=DATE},
+      f_date = #{row.fDate,jdbcType=VARCHAR},
       f_ip = #{row.fIp,jdbcType=VARCHAR},
       f_content = #{row.fContent,jdbcType=VARCHAR},
       f_info = #{row.fInfo,jdbcType=VARCHAR},
@@ -213,7 +213,7 @@
         u_id = #{uId,jdbcType=INTEGER},
       </if>
       <if test="fDate != null">
-        f_date = #{fDate,jdbcType=DATE},
+        f_date = #{fDate,jdbcType=VARCHAR},
       </if>
       <if test="fIp != null">
         f_ip = #{fIp,jdbcType=VARCHAR},
@@ -233,7 +233,7 @@
   <update id="updateByPrimaryKey" parameterType="com.wind.entity.Feedback">
     update wfeedback
     set u_id = #{uId,jdbcType=INTEGER},
-      f_date = #{fDate,jdbcType=DATE},
+      f_date = #{fDate,jdbcType=VARCHAR},
       f_ip = #{fIp,jdbcType=VARCHAR},
       f_content = #{fContent,jdbcType=VARCHAR},
       f_info = #{fInfo,jdbcType=VARCHAR},

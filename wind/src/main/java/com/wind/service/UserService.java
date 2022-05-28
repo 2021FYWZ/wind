@@ -26,13 +26,18 @@ public class UserService {
     }
 
     public boolean isExist(String uName) {
-        if (uName != null) {
-            UserExample userExample = new UserExample();
-            UserExample.Criteria criteria = userExample.createCriteria();
-            criteria.andUNameEqualTo(uName);
-            return userMapper.selectByExample(userExample).size() > 0;
-        }
-        return false;
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUNameEqualTo(uName);
+        List<User> users = userMapper.selectByExample(userExample);
+        return users != null;
+    }
+    public boolean isExist(int uId) {
+        UserExample userExample = new UserExample();
+        UserExample.Criteria criteria = userExample.createCriteria();
+        criteria.andUIdEqualTo(uId);
+        List<User> users = userMapper.selectByExample(userExample);
+        return users.size() > 0;
     }
 
     public User login(User user) {

@@ -1,8 +1,6 @@
 package com.wind.entity;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class FeedbackExample {
@@ -104,32 +102,6 @@ public class FeedbackExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andFIdIsNull() {
@@ -262,53 +234,63 @@ public class FeedbackExample {
             return (Criteria) this;
         }
 
-        public Criteria andFDateEqualTo(Date value) {
-            addCriterionForJDBCDate("f_date =", value, "fDate");
+        public Criteria andFDateEqualTo(String value) {
+            addCriterion("f_date =", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("f_date <>", value, "fDate");
+        public Criteria andFDateNotEqualTo(String value) {
+            addCriterion("f_date <>", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("f_date >", value, "fDate");
+        public Criteria andFDateGreaterThan(String value) {
+            addCriterion("f_date >", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("f_date >=", value, "fDate");
+        public Criteria andFDateGreaterThanOrEqualTo(String value) {
+            addCriterion("f_date >=", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateLessThan(Date value) {
-            addCriterionForJDBCDate("f_date <", value, "fDate");
+        public Criteria andFDateLessThan(String value) {
+            addCriterion("f_date <", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("f_date <=", value, "fDate");
+        public Criteria andFDateLessThanOrEqualTo(String value) {
+            addCriterion("f_date <=", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateIn(List<Date> values) {
-            addCriterionForJDBCDate("f_date in", values, "fDate");
+        public Criteria andFDateLike(String value) {
+            addCriterion("f_date like", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("f_date not in", values, "fDate");
+        public Criteria andFDateNotLike(String value) {
+            addCriterion("f_date not like", value, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("f_date between", value1, value2, "fDate");
+        public Criteria andFDateIn(List<String> values) {
+            addCriterion("f_date in", values, "fDate");
             return (Criteria) this;
         }
 
-        public Criteria andFDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("f_date not between", value1, value2, "fDate");
+        public Criteria andFDateNotIn(List<String> values) {
+            addCriterion("f_date not in", values, "fDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFDateBetween(String value1, String value2) {
+            addCriterion("f_date between", value1, value2, "fDate");
+            return (Criteria) this;
+        }
+
+        public Criteria andFDateNotBetween(String value1, String value2) {
+            addCriterion("f_date not between", value1, value2, "fDate");
             return (Criteria) this;
         }
 

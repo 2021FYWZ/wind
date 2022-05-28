@@ -1,12 +1,11 @@
 package com.wind.controller;
 
 import com.wind.entity.Manager;
-import com.wind.entity.User;
 import com.wind.service.ManagerService;
 import com.wind.utils.RespMsg;
 import com.wind.utils.RespStatus;
 import com.wind.utils.Tokens;
-import com.wind.utils.UAndMParams;
+import com.wind.utils.ParamsErrors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -33,7 +32,7 @@ public class ManagerController {
 
         // 参数错误
         if (result.hasErrors()) {
-            return UAndMParams.getErrorsMsg(result);
+            return ParamsErrors.getErrorsMsg(result);
         }
 
         // 错误 存在管理员
