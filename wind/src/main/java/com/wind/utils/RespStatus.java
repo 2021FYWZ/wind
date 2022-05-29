@@ -22,6 +22,8 @@ public enum RespStatus {
     SUCCESS_GET_HELP(116, "查询反馈成功"),
     SUCCESS_EDIT_HELP(117, "修改反馈成功"),
     SUCCESS_DELETE_HELP(118, "删除反馈成功"),
+    SUCCESS_GET_FEEDBACK(119, "查询反馈成功"),
+    SUCCESS_DELETE_FEEDBACK(120, "删除反馈成功"),
     // 失败
     USER_ALREADY_EXISTS(200, "用户已存在"),
     MANAGER_ALREADY_EXISTS(201, "管理员已存在"),
@@ -42,6 +44,8 @@ public enum RespStatus {
     FAIL_GET_HELP(114, "查询反馈失败"),
     FAIL_EDIT_HELP(115, "修改反馈失败"),
     FAIL_DELETE_HELP(116, "删除反馈失败"),
+    FAIL_GET_FEEDBACK(117, "查询反馈失败"),
+    FAIL_DELETE_FEEDBACK(118, "删除反馈失败"),
     // 错误
     MISS_USER_INFO(300, "缺少用户信息"),
     MISS_MANAGER_INFO(301, "缺少管理员信息"),
