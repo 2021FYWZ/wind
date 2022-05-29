@@ -15,6 +15,9 @@ public enum RespStatus {
     SUCCESS_PAY_ORDER(109, "支付成功"),
     NO_ORDER_FOUND(110, "没有搜索到相关订单"),
     SUCCESS_EDIT_NICKNAME(111, "修改昵称成功"),
+    SUCCESS_BIND_MAIL(112, "绑定邮箱成功"),
+    SUCCESS_UNBIND_MAIL(113, "取消绑定邮箱成功"),
+    SUCCESS_RESET_PASSWORD(114, "修改密码成功"),
     // 失败
     USER_ALREADY_EXISTS(200, "用户已存在"),
     MANAGER_ALREADY_EXISTS(201, "管理员已存在"),
@@ -28,6 +31,9 @@ public enum RespStatus {
     FAIL_DISPATCHED_ORDER(108, "派送失败"),
     FAIL_PAY_ORDER(108, "支付失败"),
     FAIL_EDIT_NICKNAME(109, "修改昵称失败"),
+    FAIL_BIND_MAIL(110, "绑定邮箱失败"),
+    FAIL_UNBIND_MAIL(111, "解除绑定邮箱失败"),
+    FAIL_RESET_PASSWORD(112, "重置密码失败"),
     // 错误
     MISS_USER_INFO(300, "缺少用户信息"),
     MISS_MANAGER_INFO(301, "缺少管理员信息"),
