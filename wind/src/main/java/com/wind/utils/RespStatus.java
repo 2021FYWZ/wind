@@ -18,6 +18,10 @@ public enum RespStatus {
     SUCCESS_BIND_MAIL(112, "绑定邮箱成功"),
     SUCCESS_UNBIND_MAIL(113, "取消绑定邮箱成功"),
     SUCCESS_RESET_PASSWORD(114, "修改密码成功"),
+    SUCCESS_ADD_HELP(115, "添加反馈成功"),
+    SUCCESS_GET_HELP(116, "查询反馈成功"),
+    SUCCESS_EDIT_HELP(117, "修改反馈成功"),
+    SUCCESS_DELETE_HELP(118, "删除反馈成功"),
     // 失败
     USER_ALREADY_EXISTS(200, "用户已存在"),
     MANAGER_ALREADY_EXISTS(201, "管理员已存在"),
@@ -34,6 +38,10 @@ public enum RespStatus {
     FAIL_BIND_MAIL(110, "绑定邮箱失败"),
     FAIL_UNBIND_MAIL(111, "解除绑定邮箱失败"),
     FAIL_RESET_PASSWORD(112, "重置密码失败"),
+    FAIL_ADD_HELP(113, "添加反馈失败"),
+    FAIL_GET_HELP(114, "查询反馈失败"),
+    FAIL_EDIT_HELP(115, "修改反馈失败"),
+    FAIL_DELETE_HELP(116, "删除反馈失败"),
     // 错误
     MISS_USER_INFO(300, "缺少用户信息"),
     MISS_MANAGER_INFO(301, "缺少管理员信息"),
